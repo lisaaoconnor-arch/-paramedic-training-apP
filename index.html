@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Paramedic Behavioural Disturbance Learning Tool</title>
+  <style>
+    :root {
+      --primary: #005eb8;
+      --primary-dark: #003f7d;
+      --accent: #e53935;
+      --bg: #f4f8fc;
+      --card: #ffffff;
+      --text: #12263a;
+      --muted: #5a6b7d;
+      --success: #1b8f4f;
+      --warning: #b36b00;
+      --radius: 14px;
+      --shadow: 0 8px 24px rgba(0, 38, 77, 0.08);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      color: var(--text);
+      background: linear-gradient(160deg, #e9f3ff 0%, #f7fbff 45%, #ffffff 100%);
+      line-height: 1.5;
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 1rem;
+    }
+
+    header {
+      background: linear-gradient(125deg, var(--primary-dark), var(--primary));
+      color: #fff;
+      padding: 2.2rem 1.2rem;
+      border-bottom: 4px solid var(--accent);
+    }
+
+    .hero {
+      display: grid;
+      gap: 0.6rem;
+    }
+
+    .hero h1 {
+      margin: 0;
+      font-size: clamp(1.4rem, 3vw, 2.2rem);
+    }
+
+    .hero p {
+      margin: 0;
+      max-width: 70ch;
+      color: #e9f3ff;
+    }
+
+    .tag {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.16);
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      padding: 0.35rem 0.7rem;
+      border-radius: 999px;
+      font-size: 0.85rem;
+    }
+
+    .grid {
+      display: grid;
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+
+    @media (min-width: 860px) {
+      .grid {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    details {
+      background: var(--card);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+
+    summary {
+      cursor: pointer;
+      list-style: none;
+      padding: 1rem;
+      font-weight: 700;
+      color: var(--primary-dark);
+      background: #f9fcff;
+      border-left: 6px solid var(--primary);
+    }
+
+    details[open] summary {
+      border-left-color: var(--accent);
+    }
+
+    .content {
+      padding: 1rem;
+      border-top: 1px solid #e6eef7;
+    }
+
+    .content h3 {
+      margin: 0.2rem 0 0.6rem;
+      font-size: 1rem;
+      color: var(--primary-dark);
+    }
+
+    .hint {
+      margin: 0.4rem 0;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    .scenario {
+      background: var(--card);
+      box-shadow: var(--shadow);
+      border-radius: var(--radius);
+      margin: 1rem 0 2rem;
+      overflow: hidden;
+    }
+
+    .scenario-head {
+      padding: 1rem;
+      background: linear-gradient(130deg, #eef6ff, #ffffff);
+      border-left: 6px solid var(--accent);
+    }
+
+    .scenario-body {
+      padding: 1rem;
+    }
+
+    .choices {
+      display: grid;
+      gap: 0.6rem;
+      margin-top: 0.8rem;
+    }
+
+    button.choice {
+      border: 2px solid #d8e6f7;
+      background: #fff;
+      color: var(--text);
+      border-radius: 12px;
+      padding: 0.75rem;
+      text-align: left;
+      font-size: 0.96rem;
+      cursor: pointer;
+      transition: 0.18s ease;
+    }
+
+    button.choice:hover,
+    button.choice:focus-visible {
+      border-color: var(--primary);
+      transform: translateY(-1px);
+      outline: none;
+    }
+
+    .feedback {
+      margin-top: 0.8rem;
+      padding: 0.8rem;
+      border-radius: 10px;
+      font-size: 0.95rem;
+      display: none;
+    }
+
+    .feedback.good {
+      display: block;
+      background: #e9f9f0;
+      border: 1px solid #c5efd7;
+      color: #125f35;
+    }
+
+    .feedback.bad {
+      display: block;
+      background: #fff6e8;
+      border: 1px solid #f5ddb3;
+      color: #7a4a00;
+    }
+
+    footer {
+      color: var(--muted);
+      font-size: 0.85rem;
+      padding-bottom: 1.5rem;
+    }
+
+    .small {
+      font-size: 0.9rem;
+      color: var(--muted);
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container hero">
+      <span class="tag">Prototype • Brightspace-Ready Single Page</span>
+      <h1>Behavioural Disturbance & Mental Health Crisis Learning Tool</h1>
+      <p>
+        Interactive training for paramedics using NSW Ambulance and Queensland CPG principles.
+        Build confidence in de-escalation, legal decision-making, and safe patient transport.
+      </p>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="grid" aria-label="Learning sections">
+      <details open>
+        <summary>De-escalation Techniques</summary>
+        <div class="content">
+          <p><strong>Summary:</strong> Prioritise scene safety, calm communication, and collaborative options before restrictive interventions.</p>
+          <h3>Verbal strategies</h3>
+          <ul>
+            <li>Use a calm tone, short sentences, and non-threatening body language.</li>
+            <li>Validate emotion without endorsing unsafe behaviour: “I can see you’re distressed.”</li>
+            <li>Offer choices to restore control: “Would you prefer to sit outside or in the ambulance?”</li>
+          </ul>
+          <h3>Communication examples</h3>
+          <p class="hint">“My role is to keep everyone safe. Tell me what you need right now so we can make a plan together.”</p>
+          <p class="small">Deep dive: Consider stimulus reduction, role assignment, and using one lead communicator.</p>
+        </div>
+      </details>
+
+      <details>
+        <summary>Treatment & Medications (Behavioural Disturbance)</summary>
+        <div class="content">
+          <p><strong>Summary:</strong> Assess reversible causes first (e.g., hypoxia, hypoglycaemia, intoxication, head injury), then escalate treatment proportionately.</p>
+          <ul>
+            <li>Continuous risk assessment: patient, crew, bystanders.</li>
+            <li>Use least restrictive option likely to succeed.</li>
+            <li>If sedation required, monitor airway, breathing, circulation, and sedation depth closely.</li>
+          </ul>
+          <p class="small">Deep dive: Align medication choice, dose pathway, and monitoring with current local NSW Ambulance/QLD CPG editions and service policy.</p>
+        </div>
+      </details>
+
+      <details>
+        <summary>Legal Framework (NSW Mental Health Act)</summary>
+        <div class="content">
+          <p><strong>Summary:</strong> Legal authority supports safe assessment, transport, and coordinated care where mental illness or disturbance creates significant risk.</p>
+          <h3>Key sections to know</h3>
+          <ul>
+            <li><strong>Section 20:</strong> Paramedic powers relating to persons believed to require assessment/care.</li>
+            <li><strong>Section 22:</strong> Police powers to apprehend and transport where criteria are met.</li>
+            <li><strong>Section 81:</strong> Transport/restraint considerations and lawful handling safeguards.</li>
+          </ul>
+          <p class="small">Deep dive: Document rationale, risk indicators, and least restrictive decisions clearly.</p>
+        </div>
+      </details>
+
+      <details>
+        <summary>Interactive Scenarios</summary>
+        <div class="content">
+          <p><strong>Summary:</strong> Practice structured decisions in realistic cases with immediate feedback.</p>
+          <ul>
+            <li>“What would you do next?” branching prompts.</li>
+            <li>Feedback explains why an option is safer or higher risk.</li>
+            <li>Designed for classroom discussion or self-paced LMS review.</li>
+          </ul>
+        </div>
+      </details>
+    </section>
+
+    <section class="scenario" aria-labelledby="scenario-title">
+      <div class="scenario-head">
+        <h2 id="scenario-title">Example Scenario 1: Escalating agitation at a public park</h2>
+        <p class="hint">A 24-year-old is pacing, shouting, and intermittently clenching fists. Bystanders are anxious. No obvious weapon seen. Crew has safe egress.</p>
+      </div>
+      <div class="scenario-body">
+        <p><strong>What would you do next?</strong></p>
+        <div class="choices" role="group" aria-label="Scenario response choices">
+          <button class="choice" data-correct="true">A) Nominate one clinician to engage calmly, reduce crowd stimulus, and offer simple choices while partner monitors risk and exits.</button>
+          <button class="choice" data-correct="false">B) Immediately physically restrain without verbal engagement to gain rapid control.</button>
+          <button class="choice" data-correct="false">C) Stand back and wait silently for police without attempting communication or assessment.</button>
+        </div>
+        <div id="feedback" class="feedback" aria-live="polite"></div>
+      </div>
+    </section>
+
+    <footer>
+      Prototype note: This is a training aid and not a replacement for local clinical governance, legislation, or current CPG documents.
+    </footer>
+  </main>
+
+  <script>
+    const buttons = document.querySelectorAll('.choice');
+    const feedback = document.getElementById('feedback');
+
+    buttons.forEach((button) => {
+      button.addEventListener('click', () => {
+        const isCorrect = button.dataset.correct === 'true';
+
+        if (isCorrect) {
+          feedback.className = 'feedback good';
+          feedback.textContent = 'Good choice. This applies de-escalation first, maintains safety roles, and uses least restrictive care before escalating interventions.';
+        } else {
+          feedback.className = 'feedback bad';
+          feedback.textContent = 'Higher-risk choice. Reassess safety, attempt structured communication when possible, and escalate to restraint/sedation only when clinically and legally justified.';
+        }
+      });
+    });
+  </script>
+</body>
+</html>
