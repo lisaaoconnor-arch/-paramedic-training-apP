@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Paramedic Behavioural Disturbance Learning Tool</title>
+  <style>
+    :root {
+      --primary: #005eb8;
+      --primary-dark: #003f7d;
+      --accent: #e53935;
+      --bg: #f4f8fc;
+      --card: #ffffff;
+      --text: #12263a;
+      --muted: #5a6b7d;
+      --success: #1b8f4f;
+      --warning: #b36b00;
+      --radius: 14px;
+      --shadow: 0 8px 24px rgba(0, 38, 77, 0.08);
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      color: var(--text);
+      background: linear-gradient(160deg, #e9f3ff 0%, #f7fbff 45%, #ffffff 100%);
+      line-height: 1.5;
+    }
+    .container { max-width: 1100px; margin: 0 auto; padding: 1rem; }
+    header {
+      background: linear-gradient(125deg, var(--primary-dark), var(--primary));
+      color: #fff; padding: 2.2rem 1.2rem; border-bottom: 4px solid var(--accent);
+    }
+    .hero h1 { margin: 0; font-size: clamp(1.4rem, 3vw, 2.2rem); }
+    .tag { display:inline-block; background:rgba(255,255,255,.16); border:1px solid rgba(255,255,255,.3); padding:.35rem .7rem; border-radius:999px; font-size:.85rem; }
+    .grid { display:grid; gap:1rem; margin-top:1rem; }
+    @media (min-width: 860px){ .grid{ grid-template-columns:1fr 1fr; } }
+    details, .card { background:var(--card); border-radius:var(--radius); box-shadow:var(--shadow); overflow:hidden; }
+    summary { cursor:pointer; list-style:none; padding:1rem; font-weight:700; color:var(--primary-dark); background:#f9fcff; border-left:6px solid var(--primary); }
+    details[open] summary { border-left-color: var(--accent); }
+    .content { padding:1rem; border-top:1px solid #e6eef7; }
+    .hint, .small { color:var(--muted); }
+    .small { font-size:.9rem; }
+    .scenario { margin: 1rem 0; }
+    .scenario-head { padding:1rem; background:linear-gradient(130deg,#eef6ff,#fff); border-left:6px solid var(--accent); }
+    .scenario-body { padding:1rem; }
+    .choices { display:grid; gap:.6rem; margin-top:.8rem; }
+    .choice {
+      border:2px solid #d8e6f7; background:#fff; color:var(--text); border-radius:12px; padding:.75rem;
+      text-align:left; font-size:.96rem; cursor:pointer;
+    }
+    .choice:hover, .choice:focus-visible { border-color: var(--primary); outline:none; }
+    .feedback { margin-top:.8rem; padding:.8rem; border-radius:10px; font-size:.95rem; display:none; }
+    .good { display:block; background:#e9f9f0; border:1px solid #c5efd7; color:#125f35; }
+    .bad { display:block; background:#fff6e8; border:1px solid #f5ddb3; color:#7a4a00; }
+    .podcast-controls { display:flex; flex-wrap:wrap; gap:.5rem; margin-top:.7rem; }
+    .btn { border:none; background:var(--primary); color:#fff; border-radius:10px; padding:.55rem .8rem; cursor:pointer; }
+    .btn.secondary { background:#4f5d75; }
+    .timeline { margin-top:.8rem; font-size:.92rem; color:var(--muted); }
+    .drug-grid { display:grid; gap:.6rem; margin-top:.8rem; }
+    @media (min-width:700px){ .drug-grid{ grid-template-columns:1fr 1fr; } }
+    .drug-card { border:1px solid #d6e3f5; border-radius:10px; padding:.7rem; }
+    .drug-card h4 { margin:.1rem 0 .35rem; color:var(--primary-dark); }
+    .quiz-wrap { margin-top:.8rem; padding:.8rem; border:1px dashed #bfd5f2; border-radius:10px; }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container hero">
+      <span class="tag">Prototype • Brightspace-Ready Single Page</span>
+      <h1>Behavioural Disturbance & Mental Health Crisis Learning Tool</h1>
+      <p>Interactive paramedic training using NSW Ambulance and QLD CPG-aligned principles.</p>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="grid">
+      <details open>
+        <summary>De-escalation Techniques</summary>
+        <div class="content">
+          <p><strong>Summary:</strong> Lead with least restrictive communication and dynamic risk assessment.</p>
+          <ul>
+            <li>One lead communicator, one safety observer, one clear egress plan.</li>
+            <li>Reduce triggers: lower tone, fewer people speaking, reduce lights/noise.</li>
+            <li>Offer realistic choices: location, seating, hydration, pacing options.</li>
+          </ul>
+          <div class="quiz-wrap">
+            <p><strong>Micro-drill:</strong> Best opening phrase?</p>
+            <button class="choice deescalation" data-correct="true">“I’m here to keep you safe. What’s the biggest thing upsetting you right now?”</button>
+            <button class="choice deescalation" data-correct="false">“Calm down now or we’ll restrain you.”</button>
+            <div id="deescalation-feedback" class="feedback" aria-live="polite"></div>
+          </div>
+        </div>
+      </details>
+
+      <details>
+        <summary>Treatment, Sedation & MOA</summary>
+        <div class="content">
+          <p><strong>Summary:</strong> Identify reversible causes first, then escalate treatment proportionately when required for safety.</p>
+          <div class="drug-grid">
+            <article class="drug-card">
+              <h4>Droperidol</h4>
+              <p><strong>Use:</strong> Acute agitation/sedation in selected protocols.</p>
+              <p><strong>MOA:</strong> Predominantly dopamine D2 receptor antagonism with sedative and antiemetic effects.</p>
+            </article>
+            <article class="drug-card">
+              <h4>Midazolam</h4>
+              <p><strong>Use:</strong> Rapid anxiolysis/sedation when clinically indicated.</p>
+              <p><strong>MOA:</strong> Benzodiazepine; enhances GABA-A activity, increasing inhibitory neurotransmission.</p>
+            </article>
+            <article class="drug-card">
+              <h4>Olanzapine</h4>
+              <p><strong>Use:</strong> Antipsychotic option in some behavioural disturbance pathways.</p>
+              <p><strong>MOA:</strong> Multi-receptor antagonism (including dopamine and serotonin pathways), supporting antipsychotic and calming effects.</p>
+            </article>
+            <article class="drug-card">
+              <h4>Other options (service-dependent)</h4>
+              <p>Consider local CPG-approved alternatives and patient factors (airway risk, intoxication, trauma, age, comorbidities).</p>
+            </article>
+          </div>
+          <p class="small">Always follow the current edition of your service CPG and clinical governance instructions for indication, dose, route, and monitoring.</p>
+        </div>
+      </details>
+
+      <details>
+        <summary>Legal Framework (NSW Mental Health Act)</summary>
+        <div class="content">
+          <ul>
+            <li><strong>Section 20:</strong> Paramedic powers for persons believed to need mental health assessment/care.</li>
+            <li><strong>Section 22:</strong> Police powers for apprehension/transport where criteria are met.</li>
+            <li><strong>Section 81:</strong> Transport/restraint considerations and safeguards.</li>
+          </ul>
+        </div>
+      </details>
+
+      <section class="card content">
+        <h3>Interactive Podcast Module: Prehospital Sedation</h3>
+        <p>Use this guided audio segment for revision on droperidol, midazolam, olanzapine MOA, and escalation strategy.</p>
+        <audio id="podcast" controls preload="none" style="width:100%;">
+          <source src="media/sedation-podcast.mp3" type="audio/mpeg" />
+          Your browser does not support audio playback.
+        </audio>
+        <div class="podcast-controls">
+          <button class="btn" id="play-clip">Play/Pause</button>
+          <button class="btn secondary" id="speed-toggle">Speed: 1x</button>
+        </div>
+        <p class="timeline"><strong>Suggested chapters:</strong> 00:00 scene setup, 02:00 verbal de-escalation, 04:30 droperidol vs midazolam, 07:00 olanzapine MOA, 09:00 monitoring and post-sedation care.</p>
+      </section>
+    </section>
+
+    <section class="card scenario" aria-labelledby="scenario-title">
+      <div class="scenario-head">
+        <h2 id="scenario-title">Scenario 1: Escalating agitation at a public park</h2>
+        <p class="hint">24-year-old pacing and shouting, crowd present, no visible weapon, safe egress available.</p>
+      </div>
+      <div class="scenario-body">
+        <p><strong>What would you do next?</strong></p>
+        <div class="choices">
+          <button class="choice scenario-choice" data-correct="true">A) One clinician leads calm engagement, reduces crowd stimulus, offers simple choices while partner performs safety watch.</button>
+          <button class="choice scenario-choice" data-correct="false">B) Immediate physical restraint without verbal attempt.</button>
+          <button class="choice scenario-choice" data-correct="false">C) Delay all communication and stand off indefinitely.</button>
+        </div>
+        <div id="scenario-feedback" class="feedback" aria-live="polite"></div>
+      </div>
+    </section>
+
+    <footer class="small">Training prototype only. Verify against current NSW Ambulance/QLD CPG, policy, and legislation before practice.</footer>
+  </main>
+
+  <script>
+    function wireQuiz(buttonSelector, feedbackId) {
+      const feedback = document.getElementById(feedbackId);
+      document.querySelectorAll(buttonSelector).forEach((button) => {
+        button.addEventListener('click', () => {
+          const ok = button.dataset.correct === 'true';
+          if (ok) {
+            feedback.className = 'feedback good';
+            feedback.textContent = 'Correct. This supports rapport, preserves safety, and aligns with least restrictive practice.';
+          } else {
+            feedback.className = 'feedback bad';
+            feedback.textContent = 'Not ideal. Reframe with calm, collaborative language and keep safety options open.';
+          }
+        });
+      });
+    }
+
+    wireQuiz('.scenario-choice', 'scenario-feedback');
+    wireQuiz('.deescalation', 'deescalation-feedback');
+
+    const podcast = document.getElementById('podcast');
+    const playClip = document.getElementById('play-clip');
+    const speedToggle = document.getElementById('speed-toggle');
+    const speeds = [1, 1.25, 1.5];
+    let speedIndex = 0;
+
+    playClip.addEventListener('click', () => {
+      if (podcast.paused) {
+        podcast.play();
+      } else {
+        podcast.pause();
+      }
+    });
+
+    speedToggle.addEventListener('click', () => {
+      speedIndex = (speedIndex + 1) % speeds.length;
+      podcast.playbackRate = speeds[speedIndex];
+      speedToggle.textContent = `Speed: ${speeds[speedIndex]}x`;
+    });
+  </script>
+</body>
+</html>
