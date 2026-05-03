@@ -125,11 +125,30 @@
       <details>
         <summary>Legal Framework (NSW Mental Health Act)</summary>
         <div class="content">
+          <p><strong>Quick guide (prehospital focus):</strong></p>
           <ul>
-            <li><strong>Section 20:</strong> Paramedic powers for persons believed to need mental health assessment/care.</li>
-            <li><strong>Section 22:</strong> Police powers for apprehension/transport where criteria are met.</li>
-            <li><strong>Section 81:</strong> Transport/restraint considerations and safeguards.</li>
+            <li><strong>Section 20 (Ambulance officers):</strong> Enables ambulance officers to detain and take a person for mental health assessment when statutory criteria are met (e.g., apparent mental illness/mental disorder with concern for safety).</li>
+            <li><strong>Section 22 (Police):</strong> Police can apprehend and take a person to a declared mental health facility for assessment when criteria are met.</li>
+            <li><strong>Section 81 (Transport):</strong> Covers transport to/from mental health facilities and supports practical transport arrangements, including use of authorised transport persons/services.</li>
+            <li><strong>Also relevant:</strong> <strong>Section 19</strong> (grounds for involuntary assessment/detention pathway) and <strong>Section 27</strong> (medical examination after arrival) are commonly linked to prehospital handover decisions.</li>
           </ul>
+          <p class="small">Operational tip: powers can shift with changing circumstances; if risk or presentation changes, reassess legal authority and document your reasoning and handover timeline.</p>
+
+          <div class="quiz-wrap">
+            <p><strong>Legal mini-quiz:</strong> Which section best matches each action?</p>
+            <p class="small">Q1. Police apprehend and transport person for assessment.</p>
+            <button class="choice legal-choice" data-correct="true" data-q="1">Section 22</button>
+            <button class="choice legal-choice" data-correct="false" data-q="1">Section 81</button>
+
+            <p class="small">Q2. Ambulance officer initiates detention/transport under MHA criteria.</p>
+            <button class="choice legal-choice" data-correct="true" data-q="2">Section 20</button>
+            <button class="choice legal-choice" data-correct="false" data-q="2">Section 27</button>
+
+            <p class="small">Q3. Transport arrangements to/from facility and who may transport.</p>
+            <button class="choice legal-choice" data-correct="true" data-q="3">Section 81</button>
+            <button class="choice legal-choice" data-correct="false" data-q="3">Section 22</button>
+            <div id="legal-feedback" class="feedback" aria-live="polite"></div>
+          </div>
         </div>
       </details>
 
@@ -197,6 +216,7 @@
 
     wireQuiz('.scenario-choice', 'scenario-feedback');
     wireQuiz('.deescalation', 'deescalation-feedback');
+    wireQuiz('.legal-choice', 'legal-feedback');
 
     const podcast = document.getElementById('podcast');
     const playClip = document.getElementById('play-clip');
