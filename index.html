@@ -66,16 +66,36 @@
     .sim-out { margin-top: .7rem; padding: .7rem; border-radius: 10px; background: #f8fbff; }
 
     .video-frame { aspect-ratio: 16/9; border: 1px dashed #b9cae8; border-radius: 12px; display: grid; place-items: center; padding: .8rem; background: #f7fbff; }
+ codex/create-interactive-learning-website-for-paramedics-f042p1
+    .critical-warning { background: #cf4a40; color: #fff; border-radius: 14px; box-shadow: var(--shadow); padding: 1rem 1.2rem; margin-top: 1rem; }
+    .critical-warning h2 { margin: 0 0 .4rem; font-size: 1.3rem; }
+    .critical-warning p { margin: .45rem 0; }
+    .warning-box { margin-top: .8rem; border: 1px solid #ffcec9; background: #fff4f2; color: #6f1f14; border-radius: 12px; padding: .8rem; }
+
+    .med-tabs { display: flex; flex-wrap: wrap; gap: .5rem; margin-bottom: .8rem; }
+    .med-btn { border: 1px solid #cfe0ff; border-radius: 10px; padding: .5rem .75rem; background: #fff; cursor: pointer; }
+    .med-btn.active { background: #eaf2ff; border-color: var(--blue); font-weight: 700; }
+    .med-panel { display: none; }
+    .med-panel.active { display: block; }
+    table { width: 100%; border-collapse: collapse; margin-top: .5rem; }
+    th, td { border: 1px solid #d9e5fa; padding: .55rem; text-align: left; vertical-align: top; }
+    th { background: #f5f9ff; }
+
+ main
     footer { color: var(--muted); font-size: .88rem; margin: 1rem 0 2rem; }
   </style>
 </head>
 <body>
   <header>
     <div class="container hero">
+ codex/create-interactive-learning-website-for-paramedics-f042p1
+      <span class="pill">CPG-aligned teaching prototype</span>
+
  codex/create-interactive-learning-website-for-paramedics-lnn4w7
       <span class="pill">CPG-aligned teaching prototype</span>
 
       <span class="pill">NSW Ambulance CPG-aligned teaching prototype</span>
+ main
  main
       <h1>Behavioural Disturbance: Interactive Paramedic Student Trainer</h1>
       <p>Learn recognition, de-escalation, sedation decision-making, and post-sedation respiratory rescue for patients with severe agitation or mental disturbance.</p>
@@ -92,7 +112,10 @@
             <li>May be due to mental illness, intoxication, hypoxia, hypoglycaemia, trauma, delirium, or mixed causes.</li>
             <li>Always address reversible medical causes while managing safety.</li>
           </ul>
+ codex/create-interactive-learning-website-for-paramedics-f042p1
+
  codex/create-interactive-learning-website-for-paramedics-lnn4w7
+ main
           
         </div>
       </article>
@@ -118,6 +141,91 @@
         </div>
         <div id="s20" class="tab-panel active">
           <p><strong>Section 20 (quoted):</strong> “An ambulance officer ... may take the person to a declared mental health facility if the officer believes on reasonable grounds that the person appears to be mentally ill or mentally disturbed ...”</p>
+ codex/create-interactive-learning-website-for-paramedics-f042p1
+        </div>
+        <div id="s22" class="tab-panel">
+          <p><strong>Section 22(1) (quoted):</strong> “A police officer ... may apprehend the person and take the person to a declared mental health facility if the officer believes on reasonable grounds that ...”</p>
+        </div>
+        <div id="frisk" class="tab-panel">
+          <p><strong>Search/frisk note (quoted law link):</strong> Section 22(2) says police may apprehend “without a warrant” and may exercise powers in section 81 during transport. The Mental Health Act does not set out a standalone “frisk search” power for paramedics.</p>
+        </div>
+        <p class="tiny muted">Source: NSW Mental Health Act 2007 (current in-force version) and AustLII section pages. Always confirm current wording/policy before use.</p>
+      </div>
+    </section>
+
+
+    <section class="critical-warning" aria-label="Sedation critical warning">
+      <h2>⚠️ All sedated patients are high risk</h2>
+      <p><strong>All patients being sedated are high risk — seconds from disaster — all patients might die — sedation is a big deal (it is not innocuous).</strong></p>
+    </section>
+
+    <section class="card" style="margin-top:1rem">
+      <div class="card-head"><h2><span class="icon">⚠️</span>Sedation medication safety warning</h2></div>
+      <div class="card-body">
+        <p>Understanding the pharmacological properties of the medications you are administering including their mechanism of action, indications, adverse effects, contraindications, precautions and warnings and interactions of key sedatives is essential for effective patient safety and management.</p>
+        <p>Furthermore, this comprehensive understanding allows you to better assess the benefits and risks with a holistic view of the patient’s condition, including potential differential diagnoses. This will enable you to explore alternatives or decide to withhold medication when the potential risks to the patient outweigh the benefits.</p>
+        <div class="warning-box">
+          <strong>Before giving a medication:</strong> it is good practice to refer to your medication calculator and pharmacology reference to double check indications, contraindications, routes of administration, and dosage.
+        </div>
+      </div>
+    </section>
+
+
+    <section class="card" style="margin-top:1rem">
+      <div class="card-head"><h2><span class="icon">💊</span>Medication reference tabs</h2></div>
+      <div class="card-body">
+        <div class="tabs" role="tablist">
+          <button class="tab-btn active" data-tab="olanzapine">Olanzapine</button>
+        </div>
+
+        <div id="olanzapine" class="tab-panel active">
+          <div class="med-tabs" role="tablist">
+            <button class="med-btn active" data-medtab="moa">Mechanism of Action</button>
+            <button class="med-btn" data-medtab="indications">Indications</button>
+            <button class="med-btn" data-medtab="side-effects">Side Effects</button>
+            <button class="med-btn" data-medtab="contra">Contraindications</button>
+            <button class="med-btn" data-medtab="warnings">Precautions & Warnings</button>
+          </div>
+
+          <div id="moa" class="med-panel active">
+            <p>It has antagonist properties across a number of receptor sites, particularly serotonin (5HT2A/2C, 5HT3, 5HT6), dopamine (D1, D2, D3, D4, D5), and cholinergic muscarinic receptors.</p>
+          </div>
+
+          <div id="indications" class="med-panel">
+            <p><strong>Behaviour disturbance.</strong></p>
+            <p><a href="https://cpg.ambulance.nsw.gov.au/tabs/guidelines" target="_blank" rel="noopener noreferrer">Ambulance CPG Behavioural disturbance (CPG BD1)</a> (opens in a new tab).</p>
+          </div>
+
+          <div id="side-effects" class="med-panel">
+            <table aria-label="Olanzapine side effects">
+              <thead><tr><th>Frequency</th><th>Side effects</th></tr></thead>
+              <tbody>
+                <tr><td>Common (&gt;1%)</td><td>sedation, dizziness, orthostatic hypotension, hyperglycaemia, peripheral oedema.</td></tr>
+                <tr><td>Infrequent (0.1 – &lt;1%)</td><td>Extrapyramidal Side Effects (EPSE), elevation of liver aminotransferases.</td></tr>
+                <tr><td>Rare (&lt;0.1%)</td><td>rhabdomyolysis, venous thromboembolism (VTE), hepatic failure, multi-organ hypersensitivity syndrome, QT prolongation.</td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div id="contra" class="med-panel">
+            <p>Known hypersensitivity to olanzapine or to any other excipients in olanzapine orally disintegrating tablets (Mannitol, microcrystalline cellulose, carmellose calcium, sucralose, magnesium stearate, colloidal anhydrous silica).</p>
+          </div>
+
+          <div id="warnings" class="med-panel">
+            <table aria-label="Olanzapine precautions and warnings">
+              <thead><tr><th>Precautions and warnings</th></tr></thead>
+              <tbody>
+                <tr><td>Olanzapine may cause respiratory depression or worsen depression associated with alcohol or benzodiazepine use.</td></tr>
+                <tr><td>Olanzapine may cause orthostatic hypotension; use cautiously in people whose condition may worsen if this occurs or in those with risk factors for hypotension, e.g. hypovolaemia, taking an anti-hypertensive.</td></tr>
+                <tr><td>Patients with limited physiological reserves and the elderly have an increased risk of adverse effects.</td></tr>
+                <tr><td>Olanzapine should be used cautiously in patients who have a history of seizures or are subject to factors which may lower the seizure threshold.</td></tr>
+                <tr><td>Effects on ability to drive and operate machines: Patients must be advised that olanzapine may cause drowsiness and may increase the effects of alcohol, cannabis or sleeping tablets. If affected, they do not drive or operate machinery.</td></tr>
+                <tr><td>Document any advice provided on the Health Care Record.</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
         </div>
         <div id="s22" class="tab-panel">
           <p><strong>Section 22(1) (quoted):</strong> “A police officer ... may apprehend the person and take the person to a declared mental health facility if the officer believes on reasonable grounds that ...”</p>
@@ -173,6 +281,7 @@
         <p class="tiny muted">Students should verify exact wording/thresholds in the current Act and service directives.</p>
  main
  main
+ main
       </div>
     </section>
 
@@ -209,7 +318,10 @@
       <div class="card-body">
         <p class="muted tiny">Drop AI-generated or training videos into your project folder and replace placeholder URLs below.</p>
         <div class="video-frame">
+ codex/create-interactive-learning-website-for-paramedics-f042p1
+
  codex/create-interactive-learning-website-for-paramedics-lnn4w7
+ main
           <iframe
             width="100%"
             height="100%"
@@ -220,6 +332,14 @@
             referrerpolicy="strict-origin-when-cross-origin"
             allowfullscreen>
           </iframe>
+ codex/create-interactive-learning-website-for-paramedics-f042p1
+        </div>
+        <p class="tiny muted">Embedded training video for classroom discussion and guided debrief.</p>
+      </div>
+    </section>
+
+    <footer>This training page supports education only and does not replace current clinical governance, CPGs, or legislation.</footer>
+
         </div>
         <p class="tiny muted">Embedded training video for classroom discussion and guided debrief.</p>
       </div>
@@ -235,6 +355,7 @@
 
     <footer>This training page supports education only and does not replace current NSW Ambulance clinical governance, CPGs, or legislation.</footer>
  main
+ main
   </main>
 
   <script>
@@ -244,6 +365,17 @@
         document.querySelectorAll('.tab-panel').forEach((p) => p.classList.remove('active'));
         btn.classList.add('active');
         document.getElementById(btn.dataset.tab).classList.add('active');
+      });
+    });
+
+ codex/create-interactive-learning-website-for-paramedics-f042p1
+
+    document.querySelectorAll('.med-btn').forEach((btn) => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.med-btn').forEach((b) => b.classList.remove('active'));
+        document.querySelectorAll('.med-panel').forEach((p) => p.classList.remove('active'));
+        btn.classList.add('active');
+        document.getElementById(btn.dataset.medtab).classList.add('active');
       });
     });
 
@@ -258,6 +390,19 @@
       else simOut.textContent = 'High sedation risk: respiratory depression likely. Prioritise airway positioning, oxygen, assisted ventilation, and rapid review.';
     });
 
+
+    const range = document.getElementById('sedationRange');
+    const sedLevel = document.getElementById('sedLevel');
+    const simOut = document.getElementById('simOut');
+    range.addEventListener('input', () => {
+      const v = Number(range.value);
+      sedLevel.textContent = v;
+      if (v <= 3) simOut.textContent = 'Mild effect: agitation may continue. Keep de-escalating and reassessing causes.';
+      else if (v <= 6) simOut.textContent = 'Moderate sedation: monitor closely. Airway equipment and ETCO₂ readiness essential.';
+      else simOut.textContent = 'High sedation risk: respiratory depression likely. Prioritise airway positioning, oxygen, assisted ventilation, and rapid review.';
+    });
+
+ main
     const feedback = document.getElementById('quizFeedback');
     document.querySelectorAll('.quiz-choice').forEach((choice) => {
       choice.addEventListener('click', () => {
