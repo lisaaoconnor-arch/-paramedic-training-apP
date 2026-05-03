@@ -54,16 +54,22 @@
     .tabs { display: flex; flex-wrap: wrap; gap: .5rem; margin-bottom: .8rem; }
     .tab-btn { border: 1px solid #cfe0ff; border-radius: 10px; padding: .55rem .8rem; background: #fff; cursor: pointer; }
     .tab-btn.active { background: #eaf2ff; border-color: var(--blue); color: var(--blue-2); font-weight: 700; }
+ codex/create-interactive-learning-website-for-paramedics-jin01w
+    
  codex/create-interactive-learning-website-for-paramedics-kt3ebh
+ main
     .legal-tab-panel { display: none; }
     .legal-tab-panel.active { display: block; }
     .legal-tab-btn { border: 1px solid #cfe0ff; border-radius: 10px; padding: .55rem .8rem; background: #fff; cursor: pointer; }
     .legal-tab-btn.active { background: #eaf2ff; border-color: var(--blue); color: var(--blue-2); font-weight: 700; }
 
+ codex/create-interactive-learning-website-for-paramedics-jin01w
+
     .tab-panel { display: none; }
     .tab-panel.active { display: block; }
  main
 
+ main
     .quiz-choice { width: 100%; text-align: left; padding: .72rem; border-radius: 12px; border: 1px solid #dbe8ff; background: #fff; cursor: pointer; margin-bottom: .55rem; }
     .feedback { border-radius: 10px; padding: .7rem; display: none; }
     .good { background: #e9f9f0; color: #125834; border: 1px solid #bee8cf; display: block; }
@@ -73,15 +79,26 @@
     .sim-out { margin-top: .7rem; padding: .7rem; border-radius: 10px; background: #f8fbff; }
 
     .video-frame { aspect-ratio: 16/9; border: 1px dashed #b9cae8; border-radius: 12px; display: grid; place-items: center; padding: .8rem; background: #f7fbff; }
+ codex/create-interactive-learning-website-for-paramedics-jin01w
+
 codex/create-interactive-learning-website-for-paramedics-kt3ebh
 
  codex/create-interactive-learning-website-for-paramedics-f042p1
+ main
  main
     .critical-warning { background: #cf4a40; color: #fff; border-radius: 14px; box-shadow: var(--shadow); padding: 1rem 1.2rem; margin-top: 1rem; }
     .critical-warning h2 { margin: 0 0 .4rem; font-size: 1.3rem; }
     .critical-warning p { margin: .45rem 0; }
     .warning-box { margin-top: .8rem; border: 1px solid #ffcec9; background: #fff4f2; color: #6f1f14; border-radius: 12px; padding: .8rem; }
 
+codex/create-interactive-learning-website-for-paramedics-jin01w
+    .med-drug-tabs { display:flex; flex-wrap:wrap; gap:.5rem; margin-bottom:.9rem; }
+    .med-drug-btn { border:1px solid #bfd4fb; background:#fff; border-radius:10px; padding:.5rem .75rem; cursor:pointer; }
+    .med-drug-btn.active { background:#dfeeff; border-color:var(--blue); font-weight:700; }
+    .drug-panel { display:none; }
+    .drug-panel.active { display:block; }
+
+ main
     .med-tabs { display: flex; flex-wrap: wrap; gap: .5rem; margin-bottom: .8rem; }
     .med-btn { border: 1px solid #cfe0ff; border-radius: 10px; padding: .5rem .75rem; background: #fff; cursor: pointer; }
     .med-btn.active { background: #eaf2ff; border-color: var(--blue); font-weight: 700; }
@@ -90,9 +107,12 @@ codex/create-interactive-learning-website-for-paramedics-kt3ebh
     table { width: 100%; border-collapse: collapse; margin-top: .5rem; }
     th, td { border: 1px solid #d9e5fa; padding: .55rem; text-align: left; vertical-align: top; }
     th { background: #f5f9ff; }
+ codex/create-interactive-learning-website-for-paramedics-jin01w
+
  codex/create-interactive-learning-website-for-paramedics-kt3ebh
 
 
+ main
  main
  main
     footer { color: var(--muted); font-size: .88rem; margin: 1rem 0 2rem; }
@@ -101,6 +121,9 @@ codex/create-interactive-learning-website-for-paramedics-kt3ebh
 <body>
   <header>
     <div class="container hero">
+ codex/create-interactive-learning-website-for-paramedics-jin01w
+      <span class="pill">CPG-aligned teaching prototype</span>
+
  codex/create-interactive-learning-website-for-paramedics-kt3ebh
       <span class="pill">CPG-aligned teaching prototype</span>
 
@@ -114,10 +137,118 @@ codex/create-interactive-learning-website-for-paramedics-kt3ebh
  main
  main
  main
+ main
       <h1>Behavioural Disturbance: Interactive Paramedic Student Trainer</h1>
       <p>Learn recognition, de-escalation, sedation decision-making, and post-sedation respiratory rescue for patients with severe agitation or mental disturbance.</p>
     </div>
   </header>
+ codex/create-interactive-learning-website-for-paramedics-jin01w
+
+  <main class="container">
+    <section class="grid">
+      <article class="card">
+        <div class="card-head"><h2><span class="icon">🧠</span>What is behavioural disturbance?</h2></div>
+        <div class="card-body">
+          <ul>
+            <li>Acute agitation, aggression, confusion, or psychosis creating risk to patient, crew, or others.</li>
+            <li>May be due to mental illness, intoxication, hypoxia, hypoglycaemia, trauma, delirium, or mixed causes.</li>
+            <li>Always address reversible medical causes while managing safety.</li>
+          </ul>
+          
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="card-head"><h2><span class="icon">🛡️</span>First actions: safety + de-escalation</h2></div>
+        <div class="card-body steps">
+          <div class="step"><strong>1) Scene:</strong> Maintain escape route, reduce crowd/noise, request early backup if risk escalates.</div>
+          <div class="step"><strong>2) Communication:</strong> One lead speaker, calm tone, clear boundaries, offer simple choices.</div>
+          <div class="step"><strong>3) Clinical screen:</strong> BGL, oxygenation, injury, tox, temperature, and mental state cues.</div>
+          <div class="step"><strong>4) Escalation:</strong> Least restrictive strategy likely to succeed; document why.</div>
+        </div>
+      </article>
+    </section>
+
+    <section class="card" style="margin-top:1rem">
+      <div class="card-head"><h2><span class="icon">⚖️</span>NSW Mental Health Act quick compare</h2></div>
+      <div class="card-body">
+        <div class="tabs" role="tablist">
+          <button class="legal-tab-btn active" data-legal-tab="s20">Section 20</button>
+          <button class="legal-tab-btn" data-legal-tab="s22">Section 22</button>
+          <button class="legal-tab-btn" data-legal-tab="frisk">Frisk Search</button>
+        </div>
+        <div id="s20" class="legal-tab-panel active">
+          <p><strong>Section 20 (quoted):</strong> “An ambulance officer ... may take the person to a declared mental health facility if the officer believes on reasonable grounds that the person appears to be mentally ill or mentally disturbed ...”</p>
+        </div>
+        <div id="s22" class="legal-tab-panel">
+          <p><strong>Section 22(1) (quoted):</strong> “A police officer ... may apprehend the person and take the person to a declared mental health facility if the officer believes on reasonable grounds that ...”</p>
+        </div>
+        <div id="frisk" class="legal-tab-panel">
+          <p><strong>Search/frisk note (quoted law link):</strong> Section 22(2) says police may apprehend “without a warrant” and may exercise powers in section 81 during transport. The Mental Health Act does not set out a standalone “frisk search” power for paramedics.</p>
+        </div>
+        <p class="tiny muted">Source: NSW Mental Health Act 2007 (current in-force version) and AustLII section pages. Always confirm current wording/policy before use.</p>
+      </div>
+    </section>
+
+
+    <section class="critical-warning" aria-label="Sedation critical warning">
+      <h2>⚠️ All sedated patients are high risk</h2>
+      <p><strong>All patients being sedated are high risk — seconds from disaster — all patients might die — sedation is a big deal (it is not innocuous).</strong></p>
+    </section>
+
+    <section class="card" style="margin-top:1rem">
+      <div class="card-head"><h2><span class="icon">⚠️</span>Sedation medication safety warning</h2></div>
+      <div class="card-body">
+        <p>Understanding the pharmacological properties of the medications you are administering including their mechanism of action, indications, adverse effects, contraindications, precautions and warnings and interactions of key sedatives is essential for effective patient safety and management.</p>
+        <p>Furthermore, this comprehensive understanding allows you to better assess the benefits and risks with a holistic view of the patient’s condition, including potential differential diagnoses. This will enable you to explore alternatives or decide to withhold medication when the potential risks to the patient outweigh the benefits.</p>
+        <div class="warning-box">
+          <strong>Before giving a medication:</strong> it is good practice to refer to your medication calculator and pharmacology reference to double check indications, contraindications, routes of administration, and dosage.
+        </div>
+      </div>
+    </section>
+
+
+    <section class="card" style="margin-top:1rem">
+      <div class="card-head"><h2><span class="icon">💊</span>Medication reference tabs</h2></div>
+      <div class="card-body">
+        <div class="med-drug-tabs" role="tablist">
+          <button class="med-drug-btn active" data-drug="olanzapine">Olanzapine</button>
+          <button class="med-drug-btn" data-drug="ketamine">Ketamine</button>
+          <button class="med-drug-btn" data-drug="droperidol">Droperidol</button>
+          <button class="med-drug-btn" data-drug="midazolam">Midazolam</button>
+          <button class="med-drug-btn" data-drug="fentanyl">Fentanyl</button>
+        </div>
+
+        <div id="olanzapine" class="drug-panel active">
+          <h3>Olanzapine</h3>
+          <div class="med-tabs" role="tablist">
+            <button class="med-btn active" data-medtab="olz-moa">Mechanism of Action</button>
+            <button class="med-btn" data-medtab="olz-indications">Indications</button>
+            <button class="med-btn" data-medtab="olz-side-effects">Side Effects</button>
+            <button class="med-btn" data-medtab="olz-contra">Contraindications</button>
+            <button class="med-btn" data-medtab="olz-warnings">Precautions & Warnings</button>
+          </div>
+          <div id="olz-moa" class="med-panel active"><p>It has antagonist properties across serotonin (5HT2A/2C, 5HT3, 5HT6), dopamine (D1–D5), and cholinergic muscarinic receptors.</p></div>
+          <div id="olz-indications" class="med-panel"><p><strong>Behaviour disturbance.</strong> <a href="https://cpg.ambulance.nsw.gov.au/tabs/guidelines" target="_blank" rel="noopener noreferrer">Ambulance CPG Behavioural disturbance (CPG BD1)</a>.</p></div>
+          <div id="olz-side-effects" class="med-panel"><table><tr><th>Frequency</th><th>Effects</th></tr><tr><td>Common (&gt;1%)</td><td>sedation, dizziness, orthostatic hypotension, hyperglycaemia, peripheral oedema.</td></tr><tr><td>Infrequent (0.1 – &lt;1%)</td><td>EPSE, elevation of liver aminotransferases.</td></tr><tr><td>Rare (&lt;0.1%)</td><td>rhabdomyolysis, VTE, hepatic failure, multi-organ hypersensitivity syndrome, QT prolongation.</td></tr></table></div>
+          <div id="olz-contra" class="med-panel"><p>Known hypersensitivity to olanzapine or excipients in olanzapine orally disintegrating tablets.</p></div>
+          <div id="olz-warnings" class="med-panel"><p>Respiratory depression risk (especially with alcohol/benzodiazepines), hypotension risk, seizure-threshold caution, and drowsiness/driving warnings. Document advice in Health Care Record.</p></div>
+        </div>
+
+        <div id="ketamine" class="drug-panel">
+          <h3>Ketamine</h3>
+          <div class="med-tabs" role="tablist"><button class="med-btn active" data-medtab="ket-moa">Mechanism of Action</button></div>
+          <div id="ket-moa" class="med-panel active">
+            <p>Ketamine is a non-competitive NMDA receptor antagonist with analgesic and dissociative properties. It acts centrally in the brain and spinal cord by antagonising NMDA receptors in the dorsal horn from painful stimuli causing a trance-like state characterised by analgesia and amnesia with retention of protective airway reflexes, spontaneous respirations and cardiovascular stability.</p>
+            <p>Ketamine produces a dissociative anaesthetic state. The normal electrophysiology and functions of the thalamic-neocortical and limbic systems are interrupted, leading to catalepsy and altered sensation, perception, and awareness.</p>
+            <p class="tiny muted">Add your ketamine mechanism image/video asset to this panel once available in the repository.</p>
+          </div>
+        </div>
+
+        <div id="droperidol" class="drug-panel"><h3>Droperidol</h3><div class="med-tabs"><button class="med-btn active" data-medtab="drp-moa">Mechanism of Action</button></div><div id="drp-moa" class="med-panel active"><p>Dopamine D2 receptor antagonist with anti-agitation and antiemetic properties. Blocks postsynaptic dopamine signalling in mesolimbic pathways.</p><p class="tiny muted">Add your droperidol mechanism image/video asset to this panel once available in the repository.</p></div></div>
+        <div id="midazolam" class="drug-panel"><h3>Midazolam</h3><div class="med-tabs"><button class="med-btn active" data-medtab="mdz-moa">Mechanism of Action</button></div><div id="mdz-moa" class="med-panel active"><p>Benzodiazepine that enhances GABA-A receptor activity, increasing inhibitory neurotransmission to produce anxiolysis, sedation, anticonvulsant effects, and amnesia.</p></div></div>
+        <div id="fentanyl" class="drug-panel"><h3>Fentanyl</h3><div class="med-tabs"><button class="med-btn active" data-medtab="fnt-moa">Mechanism of Action</button></div><div id="fnt-moa" class="med-panel active"><p>Potent μ-opioid receptor agonist that reduces nociceptive transmission in the brain and spinal cord, providing rapid analgesia with dose-dependent respiratory depression risk.</p></div></div>
+
  codex/create-interactive-learning-website-for-paramedics-kt3ebh
 
   <main class="container">
@@ -299,7 +430,7 @@ codex/create-interactive-learning-website-for-paramedics-kt3ebh
         document.getElementById(btn.dataset.legalTab).classList.add('active');
       });
     });
-=======
+
 
   <main class="container">
     <section class="grid">
@@ -481,6 +612,7 @@ codex/create-interactive-learning-website-for-paramedics-kt3ebh
  main
  main
  main
+ main
       </div>
     </section>
 
@@ -510,6 +642,62 @@ codex/create-interactive-learning-website-for-paramedics-kt3ebh
           <div id="quizFeedback" class="feedback" aria-live="polite"></div>
         </div>
       </article>
+ codex/create-interactive-learning-website-for-paramedics-jin01w
+    </section>
+
+    <section class="card" style="margin-top:1rem">
+      <div class="card-head"><h2><span class="icon">🎥</span>Video case studies</h2></div>
+      <div class="card-body">
+        <p class="muted tiny">Drop AI-generated or training videos into your project folder and replace placeholder URLs below.</p>
+        <div class="video-frame">
+          <iframe
+            width="100%"
+            height="100%"
+            src="https://www.youtube.com/embed/N0sBjh4Xsxw"
+            title="Behavioural disturbance training video"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            referrerpolicy="strict-origin-when-cross-origin"
+            allowfullscreen>
+          </iframe>
+        </div>
+        <p class="tiny muted">Embedded training video for classroom discussion and guided debrief.</p>
+      </div>
+    </section>
+
+    <footer>This training page supports education only and does not replace current clinical governance, CPGs, or legislation.</footer>
+  </main>
+
+  <script>
+    document.querySelectorAll('.legal-tab-btn').forEach((btn) => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.legal-tab-btn').forEach((b) => b.classList.remove('active'));
+        document.querySelectorAll('.legal-tab-panel').forEach((p) => p.classList.remove('active'));
+        btn.classList.add('active');
+        document.getElementById(btn.dataset.legalTab).classList.add('active');
+      });
+    });
+
+    document.querySelectorAll('.med-drug-btn').forEach((btn) => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.med-drug-btn').forEach((b) => b.classList.remove('active'));
+        document.querySelectorAll('.drug-panel').forEach((p) => p.classList.remove('active'));
+        btn.classList.add('active');
+        document.getElementById(btn.dataset.drug).classList.add('active');
+      });
+    });
+
+    document.querySelectorAll('.drug-panel').forEach((panel) => {
+      panel.querySelectorAll('.med-btn').forEach((btn) => {
+        btn.addEventListener('click', () => {
+          panel.querySelectorAll('.med-btn').forEach((b) => b.classList.remove('active'));
+          panel.querySelectorAll('.med-panel').forEach((p) => p.classList.remove('active'));
+          btn.classList.add('active');
+          panel.querySelector('#' + btn.dataset.medtab).classList.add('active');
+        });
+      });
+    });
+
     </section>
 
     <section class="card" style="margin-top:1rem">
@@ -593,6 +781,7 @@ codex/create-interactive-learning-website-for-paramedics-kt3ebh
 
 
 
+ main
 
     const range = document.getElementById('sedationRange');
     const sedLevel = document.getElementById('sedLevel');
@@ -605,6 +794,9 @@ codex/create-interactive-learning-website-for-paramedics-kt3ebh
       else simOut.textContent = 'High sedation risk: respiratory depression likely. Prioritise airway positioning, oxygen, assisted ventilation, and rapid review.';
     });
 
+ codex/create-interactive-learning-website-for-paramedics-jin01w
+=======
+ main
  main
  main
     const feedback = document.getElementById('quizFeedback');
