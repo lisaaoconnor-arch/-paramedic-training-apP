@@ -145,6 +145,103 @@
 
   const legalToggle=document.getElementById('legalToggle');const legalBox=document.getElementById('legalBox');
   if(legalToggle&&legalBox){legalToggle.addEventListener('click',()=>{legalBox.classList.toggle('open');legalToggle.textContent=legalBox.classList.contains('open')?'Hide Section 20 & 22 details':'Open Section 20 & 22 details';});}
+
+    <div id="t1" class="tab-panel active"><strong>Behavioural Disturbance:</strong> Assess risk, monitor airway/breathing/circulation, and screen for hypoxia, hypoglycaemia, intoxication, trauma, and delirium.</div>
+    <div id="t2" class="tab-panel"><strong>De-escalation:</strong> One lead communicator, calm tone, clear boundaries, reduced stimuli, and maintain egress for crew safety.</div>
+    <div id="t3" class="tab-panel"><strong>Sedation & MOA:</strong> Review mechanism, indication, and adverse effects before administration. Plan for immediate airway support and ventilatory rescue.</div>
+    <div id="t4" class="tab-panel"><strong>NSW Mental Health Act:</strong>
+      <button id="legalToggle" class="legal-btn" type="button">Open Section 20 & 22 details</button>
+      <div id="legalBox" class="legal-box">
+        <p><strong>Section 20:</strong> “(1) An ambulance officer who provides ambulance services in relation to a person may take the person to a declared mental health facility if the officer believes on reasonable grounds that the person appears to be mentally ill or mentally disturbed and that it would be beneficial to the person’s welfare to be dealt with in accordance with this Act.</p>
+        <p>(2) An ambulance officer may request police assistance if of the opinion that there are serious concerns relating to the safety of the person or other persons if the person is taken to a mental health facility without the assistance of a police officer.”</p>
+        <p><strong>Section 22:</strong> “(1) A police officer who, in any place, finds a person who appears to be mentally ill or mentally disturbed may apprehend the person and take the person to a declared mental health facility if the officer believes on reasonable grounds that–</p>
+        <p>(a) the person is committing or has recently committed an offence or that the person has recently attempted to kill himself or herself or that it is probable that the person will attempt to kill himself or herself or any other person or attempt to cause serious physical harm to himself or herself or any other person, and</p>
+        <p>(b) it would be beneficial to the person’s welfare to be dealt with in accordance with this Act, rather than otherwise in accordance with law.</p>
+        <p>(2) A police officer may apprehend a person under this section without a warrant and may exercise any powers conferred by section 81 on a person who is authorised under that section to take a person to a mental health facility or another health facility.”</p>
+      </div>
+    </div>
+    <div id="t5" class="tab-panel"><strong>Case Scenarios:</strong> Practice what to do next under pressure and debrief why safer options are preferred.</div>
+  </section>
+
+  <section class="sim" aria-label="Sedation teaching simulator">
+    <h3>Sedation Dose Simulator (Teaching Only)</h3>
+    <label for="sedationRange">Sedation intensity: <span id="sedLevel">0</span>/10</label>
+    <input id="sedationRange" type="range" min="0" max="10" value="0" style="width:100%" />
+    <div id="simOutput" class="sim-output">Low intensity: continue de-escalation, clinical reassessment, and preparation.</div>
+    <div class="disclaimer">Teaching disclaimer: this simulator is educational only. Students must follow current NSW Ambulance CPGs and local governance for all clinical decisions.</div>
+  </section>
+
+  <section id="scenario-quiz" class="sim">
+    <h3>Scenario Quiz</h3>
+    <p>After sedation, the patient becomes snoring with RR 6 and SpO₂ 88%. What is your immediate priority?</p>
+    <div class="quiz">
+      <button data-correct="true">Open airway, high-flow oxygen, and assist ventilation while monitoring continuously.</button>
+      <button data-correct="false">Wait and observe because sedation has reduced agitation.</button>
+      <button data-correct="false">Complete legal paperwork first, then reassess breathing.</button>
+    </div>
+    <div id="quizFeedback" class="feedback" aria-live="polite"></div>
+  </section>
+
+  <footer>Designed for mobile and Brightspace embedding. Educational resource only.</footer>
+</main>
+
+<script>
+  document.querySelectorAll('.tab-btn').forEach(btn=>{btn.addEventListener('click',()=>{document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));document.querySelectorAll('.tab-panel').forEach(p=>p.classList.remove('active'));btn.classList.add('active');document.getElementById(btn.dataset.tab).classList.add('active');});});
+
+  const range=document.getElementById('sedationRange');const level=document.getElementById('sedLevel');const out=document.getElementById('simOutput');
+  range.addEventListener('input',()=>{const v=Number(range.value);level.textContent=v;if(v<=3) out.textContent='Low intensity: continue de-escalation, clinical reassessment, and preparation.'; else if(v<=6) out.textContent='Moderate intensity: monitor closely; prepare airway equipment and escalation plan.'; else out.textContent='High intensity: respiratory depression risk increased; prioritise airway positioning, oxygenation, and assisted ventilation readiness.';});
+
+  const feedback=document.getElementById('quizFeedback');document.querySelectorAll('.quiz button').forEach(b=>{b.addEventListener('click',()=>{if(b.dataset.correct==='true'){feedback.className='feedback good';feedback.textContent='Correct: treat respiratory depression immediately with airway and ventilation support.';} else {feedback.className='feedback bad';feedback.textContent='Not correct: post-sedation hypoventilation is time-critical; ABC actions come first.';}});});
+
+  const search=document.getElementById('searchBox');const cards=[...document.querySelectorAll('#moduleCards .card')];
+  search.addEventListener('input',()=>{const q=search.value.toLowerCase().trim();cards.forEach(card=>{const text=(card.textContent+' '+card.dataset.keywords).toLowerCase();card.style.display=text.includes(q)?'block':'none';});});
+
+  document.querySelectorAll('#moduleCards .card').forEach((card, i)=>card.addEventListener('click',()=>{const id='t'+(i+1);document.querySelector('[data-tab="'+id+'"]').click();document.getElementById('learning-sections').scrollIntoView({behavior:'smooth'});}));
+
+  const legalToggle=document.getElementById('legalToggle');const legalBox=document.getElementById('legalBox');
+  if(legalToggle&&legalBox){legalToggle.addEventListener('click',()=>{legalBox.classList.toggle('open');legalToggle.textContent=legalBox.classList.contains('open')?'Hide Section 20 & 22 details':'Open Section 20 & 22 details';});}
+
+    <div id="t1" class="tab-panel active"><strong>Behavioural Disturbance:</strong> Assess risk, monitor airway/breathing/circulation, and screen for hypoxia, hypoglycaemia, intoxication, trauma, and delirium.</div>
+    <div id="t2" class="tab-panel"><strong>De-escalation:</strong> One lead communicator, calm tone, clear boundaries, reduced stimuli, and maintain egress for crew safety.</div>
+    <div id="t3" class="tab-panel"><strong>Sedation & MOA:</strong> Review mechanism, indication, and adverse effects before administration. Plan for immediate airway support and ventilatory rescue.</div>
+    <div id="t4" class="tab-panel"><strong>NSW Mental Health Act:</strong> Use the relevant legal authority for safe apprehension/transport decisions and document your rationale clearly.</div>
+    <div id="t5" class="tab-panel"><strong>Case Scenarios:</strong> Practice what to do next under pressure and debrief why safer options are preferred.</div>
+  </section>
+
+  <section class="sim" aria-label="Sedation teaching simulator">
+    <h3>Sedation Dose Simulator (Teaching Only)</h3>
+    <label for="sedationRange">Sedation intensity: <span id="sedLevel">0</span>/10</label>
+    <input id="sedationRange" type="range" min="0" max="10" value="0" style="width:100%" />
+    <div id="simOutput" class="sim-output">Low intensity: continue de-escalation, clinical reassessment, and preparation.</div>
+    <div class="disclaimer">Teaching disclaimer: this simulator is educational only. Students must follow current NSW Ambulance CPGs and local governance for all clinical decisions.</div>
+  </section>
+
+  <section id="scenario-quiz" class="sim">
+    <h3>Scenario Quiz</h3>
+    <p>After sedation, the patient becomes snoring with RR 6 and SpO₂ 88%. What is your immediate priority?</p>
+    <div class="quiz">
+      <button data-correct="true">Open airway, high-flow oxygen, and assist ventilation while monitoring continuously.</button>
+      <button data-correct="false">Wait and observe because sedation has reduced agitation.</button>
+      <button data-correct="false">Complete legal paperwork first, then reassess breathing.</button>
+    </div>
+    <div id="quizFeedback" class="feedback" aria-live="polite"></div>
+  </section>
+
+  <footer>Designed for mobile and Brightspace embedding. Educational resource only.</footer>
+</main>
+
+<script>
+  document.querySelectorAll('.tab-btn').forEach(btn=>{btn.addEventListener('click',()=>{document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));document.querySelectorAll('.tab-panel').forEach(p=>p.classList.remove('active'));btn.classList.add('active');document.getElementById(btn.dataset.tab).classList.add('active');});});
+
+  const range=document.getElementById('sedationRange');const level=document.getElementById('sedLevel');const out=document.getElementById('simOutput');
+  range.addEventListener('input',()=>{const v=Number(range.value);level.textContent=v;if(v<=3) out.textContent='Low intensity: continue de-escalation, clinical reassessment, and preparation.'; else if(v<=6) out.textContent='Moderate intensity: monitor closely; prepare airway equipment and escalation plan.'; else out.textContent='High intensity: respiratory depression risk increased; prioritise airway positioning, oxygenation, and assisted ventilation readiness.';});
+
+  const feedback=document.getElementById('quizFeedback');document.querySelectorAll('.quiz button').forEach(b=>{b.addEventListener('click',()=>{if(b.dataset.correct==='true'){feedback.className='feedback good';feedback.textContent='Correct: treat respiratory depression immediately with airway and ventilation support.';} else {feedback.className='feedback bad';feedback.textContent='Not correct: post-sedation hypoventilation is time-critical; ABC actions come first.';}});});
+
+  const search=document.getElementById('searchBox');const cards=[...document.querySelectorAll('#moduleCards .card')];
+  search.addEventListener('input',()=>{const q=search.value.toLowerCase().trim();cards.forEach(card=>{const text=(card.textContent+' '+card.dataset.keywords).toLowerCase();card.style.display=text.includes(q)?'block':'none';});});
+
+  document.querySelectorAll('#moduleCards .card').forEach((card, i)=>card.addEventListener('click',()=>{const id='t'+(i+1);document.querySelector('[data-tab="'+id+'"]').click();document.getElementById('learning-sections').scrollIntoView({behavior:'smooth'});}));
 </script>
 </body>
 </html>
