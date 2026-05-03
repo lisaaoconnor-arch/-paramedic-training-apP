@@ -36,6 +36,7 @@
     .medblock .bad{background:#4d1519;border-left:4px solid #e33b42;padding:.5rem .7rem;border-radius:8px}
     .medblock ul{margin:.4rem 0 .1rem 1rem}
     .drug-tabs{display:flex;gap:.4rem;flex-wrap:wrap;margin:.6rem 0}.drug-btn{border:1px solid #b8cdf1;background:#fff;border-radius:9px;padding:.45rem .65rem;cursor:pointer}.drug-btn.active{background:#dce9ff;border-color:#2c6bb2;font-weight:700}.drug-panel{display:none}.drug-panel.active{display:block}
+    .form-grid{display:grid;gap:.7rem;grid-template-columns:1fr}@media(min-width:760px){.form-grid{grid-template-columns:1fr 1fr}}.form-field{display:flex;flex-direction:column;gap:.3rem}.form-field input,.form-field select,.form-field textarea{padding:.55rem;border:1px solid #cddfff;border-radius:8px;font:inherit}.checkline{display:flex;gap:.9rem;flex-wrap:wrap}.form-actions{display:flex;gap:.6rem;margin-top:.7rem}
     footer{padding:1.2rem 0 2rem;color:var(--muted);font-size:.88rem}
   </style>
 </head>
@@ -69,6 +70,7 @@
       <button class="tab-btn" data-tab="t3">Sedation & MOA</button>
       <button class="tab-btn" data-tab="t4">NSW Mental Health Act</button>
       <button class="tab-btn" data-tab="t5">Case Scenarios</button>
+      <button class="tab-btn" data-tab="t6">Section 20 Form</button>
     </div>
 
     <div id="t1" class="tab-panel active"><strong>Behavioural Disturbance:</strong> Assess risk, monitor airway/breathing/circulation, and screen for hypoxia, hypoglycaemia, intoxication, trauma, and delirium.</div>
@@ -103,6 +105,26 @@
       </div>
     </div>
     <div id="t5" class="tab-panel"><strong>Case Scenarios:</strong> Practice what to do next under pressure and debrief why safer options are preferred.</div>
+    <div id="t6" class="tab-panel">
+      <strong>Section 20 Form</strong>
+      <p class="small">Training form prototype for documenting Section 20 decision-making.</p>
+      <form class="form-grid" onsubmit="event.preventDefault(); alert('Training form saved locally (demo only).');">
+        <label class="form-field">Date/time<input type="datetime-local" required></label>
+        <label class="form-field">Patient name<input type="text" placeholder="Full name"></label>
+        <label class="form-field">DOB<input type="date"></label>
+        <label class="form-field">Location found<input type="text"></label>
+        <label class="form-field">Presenting behaviour<textarea rows="3" placeholder="Observed disturbance / risk indicators"></textarea></label>
+        <label class="form-field">Reasonable grounds<select><option>Mentally ill</option><option>Mentally disturbed</option><option>Both</option></select></label>
+        <label class="form-field">Welfare benefit rationale<textarea rows="3" placeholder="Why transport under Section 20 is beneficial"></textarea></label>
+        <label class="form-field">Police assistance requested?<select><option>No</option><option>Yes</option></select></label>
+        <div class="form-field"><span>Immediate risk factors</span><div class="checkline"><label><input type="checkbox"> Self-harm risk</label><label><input type="checkbox"> Harm to others</label><label><input type="checkbox"> Severe agitation</label><label><input type="checkbox"> Weapon concern</label></div></div>
+        <label class="form-field">Receiving mental health facility<input type="text"></label>
+        <label class="form-field">Crew clinician name<input type="text"></label>
+        <label class="form-field">Clinical level<select><option>Student</option><option>Paramedic</option><option>ICP</option><option>Other</option></select></label>
+        <label class="form-field" style="grid-column:1/-1">Additional notes<textarea rows="4"></textarea></label>
+        <div class="form-actions" style="grid-column:1/-1"><button class="btn primary" type="submit">Save (Demo)</button><button class="btn secondary" type="reset">Clear</button></div>
+      </form>
+    </div>
   </section>
 
   <section class="sim" aria-label="Sedation teaching simulator">
