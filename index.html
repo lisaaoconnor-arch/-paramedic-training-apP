@@ -115,6 +115,34 @@
     </div>
   </section>
 
+      <p class="small">Training form prototype for documenting Section 20 decision-making.</p>
+      <form class="form-grid" onsubmit="event.preventDefault(); alert('Training form saved locally (demo only).');">
+        <label class="form-field">Date/time<input type="datetime-local" required></label>
+        <label class="form-field">Patient name<input type="text" placeholder="Full name"></label>
+        <label class="form-field">DOB<input type="date"></label>
+        <label class="form-field">Location found<input type="text"></label>
+        <label class="form-field">Presenting behaviour<textarea rows="3" placeholder="Observed disturbance / risk indicators"></textarea></label>
+        <label class="form-field">Reasonable grounds<select><option>Mentally ill</option><option>Mentally disturbed</option><option>Both</option></select></label>
+        <label class="form-field">Welfare benefit rationale<textarea rows="3" placeholder="Why transport under Section 20 is beneficial"></textarea></label>
+        <label class="form-field">Police assistance requested?<select><option>No</option><option>Yes</option></select></label>
+        <div class="form-field"><span>Immediate risk factors</span><div class="checkline"><label><input type="checkbox"> Self-harm risk</label><label><input type="checkbox"> Harm to others</label><label><input type="checkbox"> Severe agitation</label><label><input type="checkbox"> Weapon concern</label></div></div>
+        <label class="form-field">Receiving mental health facility<input type="text"></label>
+        <label class="form-field">Crew clinician name<input type="text"></label>
+        <label class="form-field">Clinical level<select><option>Student</option><option>Paramedic</option><option>ICP</option><option>Other</option></select></label>
+        <label class="form-field" style="grid-column:1/-1">Additional notes<textarea rows="4"></textarea></label>
+        <div class="form-actions" style="grid-column:1/-1"><button class="btn primary" type="submit">Save (Demo)</button><button class="btn secondary" type="reset">Clear</button></div>
+      </form>
+    </div>
+  </section>
+
+  <section class="sim" aria-label="Sedation teaching simulator">
+    <h3>Sedation Dose Simulator (Teaching Only)</h3>
+    <label for="sedationRange">Sedation intensity: <span id="sedLevel">0</span>/10</label>
+    <input id="sedationRange" type="range" min="0" max="10" value="0" style="width:100%" />
+    <div id="simOutput" class="sim-output">Low intensity: continue de-escalation, clinical reassessment, and preparation.</div>
+    <div class="disclaimer">Teaching disclaimer: this simulator is educational only. Students must follow current NSW Ambulance CPGs and local governance for all clinical decisions.</div>
+  </section>
+
   <section id="scenario-quiz" class="sim">
     <h3>Scenario Quiz</h3>
     <p>After sedation, the patient becomes snoring with RR 6 and SpO₂ 88%. What is your immediate priority?</p>
@@ -132,6 +160,8 @@
 <script>
   document.querySelectorAll('.tab-btn').forEach(btn=>{btn.addEventListener('click',()=>{document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));document.querySelectorAll('.tab-panel').forEach(p=>p.classList.remove('active'));btn.classList.add('active');document.getElementById(btn.dataset.tab).classList.add('active');});});
 
+  const range=document.getElementById('sedationRange');const level=document.getElementById('sedLevel');const out=document.getElementById('simOutput');
+  range.addEventListener('input',()=>{const v=Number(range.value);level.textContent=v;if(v<=3) out.textContent='Low intensity: continue de-escalation, clinical reassessment, and preparation.'; else if(v<=6) out.textContent='Moderate intensity: monitor closely; prepare airway equipment and escalation plan.'; else out.textContent='High intensity: respiratory depression risk increased; prioritise airway positioning, oxygenation, and assisted ventilation readiness.';});
 
   const feedback=document.getElementById('quizFeedback');document.querySelectorAll('.quiz button').forEach(b=>{b.addEventListener('click',()=>{if(b.dataset.correct==='true'){feedback.className='feedback good';feedback.textContent='Correct: treat respiratory depression immediately with airway and ventilation support.';} else {feedback.className='feedback bad';feedback.textContent='Not correct: post-sedation hypoventilation is time-critical; ABC actions come first.';}});});
 
