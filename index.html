@@ -112,6 +112,23 @@
         <img src="assets/section20-form.jpg" alt="NSW Mental Health Act 2007 Section 20 request by ambulance officer form">
       </figure>
       <p class="small">If the image is not visible, place the provided file at <code>assets/section20-form.jpg</code>.</p>
+      <p class="small">Training form prototype for documenting Section 20 decision-making.</p>
+      <form class="form-grid" onsubmit="event.preventDefault(); alert('Training form saved locally (demo only).');">
+        <label class="form-field">Date/time<input type="datetime-local" required></label>
+        <label class="form-field">Patient name<input type="text" placeholder="Full name"></label>
+        <label class="form-field">DOB<input type="date"></label>
+        <label class="form-field">Location found<input type="text"></label>
+        <label class="form-field">Presenting behaviour<textarea rows="3" placeholder="Observed disturbance / risk indicators"></textarea></label>
+        <label class="form-field">Reasonable grounds<select><option>Mentally ill</option><option>Mentally disturbed</option><option>Both</option></select></label>
+        <label class="form-field">Welfare benefit rationale<textarea rows="3" placeholder="Why transport under Section 20 is beneficial"></textarea></label>
+        <label class="form-field">Police assistance requested?<select><option>No</option><option>Yes</option></select></label>
+        <div class="form-field"><span>Immediate risk factors</span><div class="checkline"><label><input type="checkbox"> Self-harm risk</label><label><input type="checkbox"> Harm to others</label><label><input type="checkbox"> Severe agitation</label><label><input type="checkbox"> Weapon concern</label></div></div>
+        <label class="form-field">Receiving mental health facility<input type="text"></label>
+        <label class="form-field">Crew clinician name<input type="text"></label>
+        <label class="form-field">Clinical level<select><option>Student</option><option>Paramedic</option><option>ICP</option><option>Other</option></select></label>
+        <label class="form-field" style="grid-column:1/-1">Additional notes<textarea rows="4"></textarea></label>
+        <div class="form-actions" style="grid-column:1/-1"><button class="btn primary" type="submit">Save (Demo)</button><button class="btn secondary" type="reset">Clear</button></div>
+      </form>
     </div>
   </section>
 
