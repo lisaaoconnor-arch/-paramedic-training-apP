@@ -36,7 +36,7 @@
     .medblock .bad{background:#4d1519;border-left:4px solid #e33b42;padding:.5rem .7rem;border-radius:8px}
     .medblock ul{margin:.4rem 0 .1rem 1rem}
     .drug-tabs{display:flex;gap:.4rem;flex-wrap:wrap;margin:.6rem 0}.drug-btn{border:1px solid #b8cdf1;background:#fff;border-radius:9px;padding:.45rem .65rem;cursor:pointer}.drug-btn.active{background:#dce9ff;border-color:#2c6bb2;font-weight:700}.drug-panel{display:none}.drug-panel.active{display:block}
-    .form-grid{display:grid;gap:.7rem;grid-template-columns:1fr}@media(min-width:760px){.form-grid{grid-template-columns:1fr 1fr}}.form-field{display:flex;flex-direction:column;gap:.3rem}.form-field input,.form-field select,.form-field textarea{padding:.55rem;border:1px solid #cddfff;border-radius:8px;font:inherit}.checkline{display:flex;gap:.9rem;flex-wrap:wrap}.form-actions{display:flex;gap:.6rem;margin-top:.7rem}
+    .form-grid{display:grid;gap:.7rem;grid-template-columns:1fr}@media(min-width:760px){.form-grid{grid-template-columns:1fr 1fr}}.form-field{display:flex;flex-direction:column;gap:.3rem}.form-field input,.form-field select,.form-field textarea{padding:.55rem;border:1px solid #cddfff;border-radius:8px;font:inherit}.checkline{display:flex;gap:.9rem;flex-wrap:wrap}.form-actions{display:flex;gap:.6rem;margin-top:.7rem}.form-image{margin-top:.7rem;background:#fff;border:1px solid #d7e5ff;border-radius:12px;padding:.6rem}.form-image img{width:100%;height:auto;border-radius:8px;display:block}
     footer{padding:1.2rem 0 2rem;color:var(--muted);font-size:.88rem}
   </style>
 </head>
@@ -107,6 +107,11 @@
     <div id="t5" class="tab-panel"><strong>Case Scenarios:</strong> Practice what to do next under pressure and debrief why safer options are preferred.</div>
     <div id="t6" class="tab-panel">
       <strong>Section 20 Form</strong>
+      <p class="small">Reference form image (training view).</p>
+      <figure class="form-image">
+        <img src="assets/section20-form.jpg" alt="NSW Mental Health Act 2007 Section 20 request by ambulance officer form">
+      </figure>
+      <p class="small">If the image is not visible, place the provided file at <code>assets/section20-form.jpg</code>.</p>
       <p class="small">Training form prototype for documenting Section 20 decision-making.</p>
       <form class="form-grid" onsubmit="event.preventDefault(); alert('Training form saved locally (demo only).');">
         <label class="form-field">Date/time<input type="datetime-local" required></label>
