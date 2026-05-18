@@ -3,502 +3,162 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Paramedic Behavioural Disturbance Learning Tool</title>
+  <title>The Roman Times — Old Paper Poster</title>
   <style>
     :root {
-      --primary: #005eb8;
-      --primary-dark: #003f7d;
-      --accent: #e53935;
-      --bg: #f4f8fc;
-      --card: #ffffff;
-      --text: #12263a;
-      --muted: #5a6b7d;
-      --success: #1b8f4f;
-      --warning: #b36b00;
-      --radius: 14px;
-      --shadow: 0 8px 24px rgba(0, 38, 77, 0.08);
+      --ink: #2a1a0f;
+      --muted-ink: #4d3927;
+      --paper: #efe0bf;
+      --paper-dark: #d2bc8a;
+      --accent: #6e3412;
     }
+
     * { box-sizing: border-box; }
+
     body {
       margin: 0;
-      font-family: "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-      color: var(--text);
-      background: linear-gradient(160deg, #e9f3ff 0%, #f7fbff 45%, #ffffff 100%);
-      line-height: 1.5;
+      min-height: 100vh;
+      display: grid;
+      place-items: center;
+      font-family: "Times New Roman", Georgia, serif;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at 15% 10%, rgba(120, 84, 44, 0.15) 0, rgba(120, 84, 44, 0) 35%),
+        radial-gradient(circle at 85% 90%, rgba(120, 84, 44, 0.12) 0, rgba(120, 84, 44, 0) 40%),
+        linear-gradient(160deg, #7d6643 0%, #5e4a31 100%);
+      padding: 2rem;
     }
-    .container { max-width: 1100px; margin: 0 auto; padding: 1rem; }
-    header {
-      background: linear-gradient(125deg, var(--primary-dark), var(--primary));
-      color: #fff; padding: 2.2rem 1.2rem; border-bottom: 4px solid var(--accent);
+
+    .poster {
+      width: min(980px, 100%);
+      background:
+        repeating-linear-gradient(0deg, rgba(93, 59, 31, 0.04), rgba(93, 59, 31, 0.04) 2px, transparent 2px, transparent 4px),
+        linear-gradient(180deg, #f4e8c8 0%, var(--paper) 52%, var(--paper-dark) 100%);
+      border: 10px solid #5c3b20;
+      box-shadow: 0 18px 40px rgba(0, 0, 0, 0.4), inset 0 0 140px rgba(90, 64, 34, 0.25);
+      padding: 2.2rem 2rem 2.5rem;
+      position: relative;
+      overflow: hidden;
     }
-    .hero h1 { margin: 0; font-size: clamp(1.4rem, 3vw, 2.2rem); }
-    .tag { display:inline-block; background:rgba(255,255,255,.16); border:1px solid rgba(255,255,255,.3); padding:.35rem .7rem; border-radius:999px; font-size:.85rem; }
-    .grid { display:grid; gap:1rem; margin-top:1rem; }
-    @media (min-width: 860px){ .grid{ grid-template-columns:1fr 1fr; } }
-    details, .card { background:var(--card); border-radius:var(--radius); box-shadow:var(--shadow); overflow:hidden; }
-    summary { cursor:pointer; list-style:none; padding:1rem; font-weight:700; color:var(--primary-dark); background:#f9fcff; border-left:6px solid var(--primary); }
-    details[open] summary { border-left-color: var(--accent); }
-    .content { padding:1rem; border-top:1px solid #e6eef7; }
-    .hint, .small { color:var(--muted); }
-    .small { font-size:.9rem; }
-    .scenario { margin: 1rem 0; }
-    .scenario-head { padding:1rem; background:linear-gradient(130deg,#eef6ff,#fff); border-left:6px solid var(--accent); }
-    .scenario-body { padding:1rem; }
-    .choices { display:grid; gap:.6rem; margin-top:.8rem; }
-    .choice {
-      border:2px solid #d8e6f7; background:#fff; color:var(--text); border-radius:12px; padding:.75rem;
-      text-align:left; font-size:.96rem; cursor:pointer;
+
+    .poster::before,
+    .poster::after {
+      content: "";
+      position: absolute;
+      pointer-events: none;
+      inset: 0;
     }
-    .choice:hover, .choice:focus-visible { border-color: var(--primary); outline:none; }
-    .feedback { margin-top:.8rem; padding:.8rem; border-radius:10px; font-size:.95rem; display:none; }
-    .good { display:block; background:#e9f9f0; border:1px solid #c5efd7; color:#125f35; }
-    .bad { display:block; background:#fff6e8; border:1px solid #f5ddb3; color:#7a4a00; }
-    .podcast-controls { display:flex; flex-wrap:wrap; gap:.5rem; margin-top:.7rem; }
-    .btn { border:none; background:var(--primary); color:#fff; border-radius:10px; padding:.55rem .8rem; cursor:pointer; }
-    .btn.secondary { background:#4f5d75; }
-    .timeline { margin-top:.8rem; font-size:.92rem; color:var(--muted); }
-    .drug-grid { display:grid; gap:.6rem; margin-top:.8rem; }
-    @media (min-width:700px){ .drug-grid{ grid-template-columns:1fr 1fr; } }
-    .drug-card { border:1px solid #d6e3f5; border-radius:10px; padding:.7rem; }
-    .drug-card h4 { margin:.1rem 0 .35rem; color:var(--primary-dark); }
-    .quiz-wrap { margin-top:.8rem; padding:.8rem; border:1px dashed #bfd5f2; border-radius:10px; }
+
+    .poster::before {
+      background-image:
+        radial-gradient(circle at 25% 30%, rgba(0, 0, 0, 0.08) 0 2px, transparent 2px),
+        radial-gradient(circle at 70% 60%, rgba(0, 0, 0, 0.06) 0 1.5px, transparent 1.5px),
+        radial-gradient(circle at 45% 85%, rgba(0, 0, 0, 0.05) 0 1.5px, transparent 1.5px);
+      background-size: 220px 220px, 180px 180px, 160px 160px;
+      mix-blend-mode: multiply;
+      opacity: 0.35;
+    }
+
+    .poster::after {
+      border: 2px solid rgba(62, 32, 14, 0.35);
+      margin: 12px;
+    }
+
+    .masthead {
+      text-align: center;
+      border-bottom: 3px double var(--accent);
+      padding-bottom: 0.9rem;
+      margin-bottom: 1.2rem;
+    }
+
+    .masthead h1 {
+      margin: 0;
+      font-size: clamp(2rem, 7vw, 3.8rem);
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      font-weight: 700;
+    }
+
+    .headline {
+      text-align: center;
+      margin: 0;
+      font-size: clamp(1.5rem, 5vw, 2.8rem);
+      line-height: 1.1;
+      text-transform: uppercase;
+      font-weight: 700;
+    }
+
+    .byline {
+      text-align: center;
+      margin: .65rem 0 .25rem;
+      font-size: 1.1rem;
+      font-style: italic;
+    }
+
+    .dateline {
+      text-align: center;
+      margin: 0 0 1.25rem;
+      font-size: 1rem;
+      font-weight: bold;
+    }
+
+    .content {
+      column-count: 2;
+      column-gap: 2rem;
+      font-size: 1.08rem;
+      line-height: 1.45;
+      text-align: justify;
+    }
+
+    .content p { margin: 0 0 .95rem; }
+
+    .quote {
+      border-left: 4px solid var(--accent);
+      padding-left: .7rem;
+      font-style: italic;
+      margin: .2rem 0 .95rem;
+      break-inside: avoid;
+    }
+
+    .final-line {
+      margin-top: 1rem;
+      text-align: center;
+      font-weight: 700;
+      text-transform: uppercase;
+      border-top: 2px solid rgba(80, 45, 20, 0.45);
+      padding-top: .8rem;
+      letter-spacing: .4px;
+    }
+
+    @media (max-width: 780px) {
+      .content { column-count: 1; }
+      .poster { padding: 1.5rem 1.2rem 1.7rem; }
+    }
   </style>
 </head>
 <body>
-  <header>
-    <div class="container hero">
-      <span class="tag">Prototype • Brightspace-Ready Single Page</span>
-      <h1>Behavioural Disturbance & Mental Health Crisis Learning Tool</h1>
-      <p>Interactive paramedic training using NSW Ambulance and QLD CPG-aligned principles.</p>
-    </div>
-  </header>
+  <article class="poster" role="article" aria-label="The Roman Times poster article about Julius Caesar">
+    <header class="masthead">
+      <h1>The Roman Times</h1>
+    </header>
 
-  <main class="container">
-    <section class="grid">
-      <details open>
-        <summary>De-escalation Techniques</summary>
-        <div class="content">
-          <p><strong>Summary:</strong> Lead with least restrictive communication and dynamic risk assessment.</p>
-          <ul>
-            <li>One lead communicator, one safety observer, one clear egress plan.</li>
-            <li>Reduce triggers: lower tone, fewer people speaking, reduce lights/noise.</li>
-            <li>Offer realistic choices: location, seating, hydration, pacing options.</li>
-          </ul>
-          <div class="quiz-wrap">
-            <p><strong>Micro-drill:</strong> Best opening phrase?</p>
-            <button class="choice deescalation" data-correct="true">“I’m here to keep you safe. What’s the biggest thing upsetting you right now?”</button>
-            <button class="choice deescalation" data-correct="false">“Calm down now or we’ll restrain you.”</button>
-            <div id="deescalation-feedback" class="feedback" aria-live="polite"></div>
-          </div>
-        </div>
-      </details>
+    <h2 class="headline">Dictator Caesar<br />Slain by Senators</h2>
+    <p class="byline">By Ben Carew-Ferguson</p>
+    <p class="dateline">Rome, March 15—</p>
 
-      <details>
-        <summary>Treatment, Sedation & MOA</summary>
-        <div class="content">
-          <p><strong>Summary:</strong> Identify reversible causes first, then escalate treatment proportionately when required for safety.</p>
-          <div class="drug-grid">
-            <article class="drug-card">
-              <h4>Droperidol</h4>
-              <p><strong>Use:</strong> Acute agitation/sedation in selected protocols.</p>
-              <p><strong>MOA:</strong> Predominantly dopamine D2 receptor antagonism with sedative and antiemetic effects.</p>
-            </article>
-            <article class="drug-card">
-              <h4>Midazolam</h4>
-              <p><strong>Use:</strong> Rapid anxiolysis/sedation when clinically indicated.</p>
-              <p><strong>MOA:</strong> Benzodiazepine; enhances GABA-A activity, increasing inhibitory neurotransmission.</p>
-            </article>
-            <article class="drug-card">
-              <h4>Olanzapine</h4>
-              <p><strong>Use:</strong> Antipsychotic option in some behavioural disturbance pathways.</p>
-              <p><strong>MOA:</strong> Multi-receptor antagonism (including dopamine and serotonin pathways), supporting antipsychotic and calming effects.</p>
-            </article>
-            <article class="drug-card">
-              <h4>Other options (service-dependent)</h4>
-              <p>Consider local CPG-approved alternatives and patient factors (airway risk, intoxication, trauma, age, comorbidities).</p>
-            </article>
-          </div>
-          <p class="small">Always follow the current edition of your service CPG and clinical governance instructions for indication, dose, route, and monitoring.</p>
-        </div>
-      </details>
-
-      <details>
-        <summary>Legal Framework (NSW Mental Health Act)</summary>
-        <div class="content">
-          <p><strong>Quick guide (prehospital focus):</strong></p>
-          <ul>
-            <li><strong>Section 20 (Ambulance officers):</strong> Enables ambulance officers to detain and take a person for mental health assessment when statutory criteria are met (e.g., apparent mental illness/mental disorder with concern for safety).</li>
-            <li><strong>Section 22 (Police):</strong> Police can apprehend and take a person to a declared mental health facility for assessment when criteria are met.</li>
-            <li><strong>Section 81 (Transport):</strong> Covers transport to/from mental health facilities and supports practical transport arrangements, including use of authorised transport persons/services.</li>
-            <li><strong>Also relevant:</strong> <strong>Section 19</strong> (grounds for involuntary assessment/detention pathway) and <strong>Section 27</strong> (medical examination after arrival) are commonly linked to prehospital handover decisions.</li>
-          </ul>
-          <p class="small">Operational tip: powers can shift with changing circumstances; if risk or presentation changes, reassess legal authority and document your reasoning and handover timeline.</p>
-
-          <div class="quiz-wrap">
-            <p><strong>Legal mini-quiz:</strong> Which section best matches each action?</p>
-            <p class="small">Q1. Police apprehend and transport person for assessment.</p>
-            <button class="choice legal-choice" data-correct="true" data-q="1">Section 22</button>
-            <button class="choice legal-choice" data-correct="false" data-q="1">Section 81</button>
-
-            <p class="small">Q2. Ambulance officer initiates detention/transport under MHA criteria.</p>
-            <button class="choice legal-choice" data-correct="true" data-q="2">Section 20</button>
-            <button class="choice legal-choice" data-correct="false" data-q="2">Section 27</button>
-
-            <p class="small">Q3. Transport arrangements to/from facility and who may transport.</p>
-            <button class="choice legal-choice" data-correct="true" data-q="3">Section 81</button>
-            <button class="choice legal-choice" data-correct="false" data-q="3">Section 22</button>
-            <div id="legal-feedback" class="feedback" aria-live="polite"></div>
-          </div>
-        </div>
-      </details>
-
-
-      <section class="card content">
-        <h3>NSW Janison Module Content Import</h3>
-        <p class="small">Direct automated retrieval from the provided Janison SCORM URL is access-restricted. Paste approved notes/transcript below to inject local teaching content into this page for Brightspace delivery.</p>
-        <textarea id="janison-notes" rows="5" style="width:100%; border:1px solid #cbdcf3; border-radius:10px; padding:.6rem;" placeholder="Paste key points from the NSW Ambulance module..."></textarea>
-        <div class="podcast-controls">
-          <button class="btn" id="apply-notes">Add to lesson</button>
-        </div>
-        <div id="notes-output" class="timeline" aria-live="polite"></div>
-      </section>
-
-      <section class="card content">
-        <h3>Interactive Podcast Module: Prehospital Sedation</h3>
-        <p>Use this guided audio segment for revision on droperidol, midazolam, olanzapine MOA, and escalation strategy.</p>
-        <audio id="podcast" controls preload="none" style="width:100%;">
-          <source src="media/sedation-podcast.mp3" type="audio/mpeg" />
-          Your browser does not support audio playback.
-        </audio>
-        <div class="podcast-controls">
-          <button class="btn" id="play-clip">Play/Pause</button>
-          <button class="btn secondary" id="speed-toggle">Speed: 1x</button>
-        </div>
-        <p class="timeline"><strong>Suggested chapters:</strong> 00:00 scene setup, 02:00 verbal de-escalation, 04:30 droperidol vs midazolam, 07:00 olanzapine MOA, 09:00 monitoring and post-sedation care.</p>
-      </section>
+    <section class="content">
+      <p>Julius Caesar, the Roman dictator, has been ambushed and stabbed 23 times at the Theatre of Pompey in Rome where the Senate was meeting. The conspirators were led by Marcus Junius Brutus and Gaius Cassius Longinus.</p>
+      <p>It is believed that Caesar was assassinated in a planned political attack. The senators stabbed him multiple times because they feared he was becoming too powerful and might end the Roman Republic.</p>
+      <p>On the “Ides of March” (March 15, 44 BCE), Caesar was at a meeting of the Roman Senate at the Theatre of Pompey in Rome. Around 60 senators had secretly planned to kill him.</p>
+      <p>The conspirators surrounded Caesar as if they wanted to present a request. One senator grabbed his toga, which was the signal to attack. The group then surrounded Caesar and then stabbed him many times with daggers as Caesar tried to shield himself from the attack.</p>
+      <p class="quote">According to witnesses Caesar was shocked to see his friend Marcus Junius Brutus among the attackers and was heard saying “Et tu, Brute?” (“You too, Brutus?”).</p>
+      <p>Caesar then succumbed to the violent attack and is said to have collapsed and died near a statue of his former rival, Pompey the Great.</p>
+      <p>Julius Caesar has been one of the most significant figures in Roman history because his leadership changed the course of the Roman Republic and helped lead to the rise of the Roman Empire. Through his military victories, especially in Gaul, Caesar expanded Rome’s territory and increased its power and wealth.</p>
+      <p>Caesar also introduced important political and social reforms, including changes to the calendar, debt relief, and support for the poor. However, his growing authority and appointment as dictator for life caused fear among many senators, who believed he threatened the Republic’s democratic system.</p>
+      <p>Crowds have gathered in disbelief as word spreads of Caesar’s death across the Forum. Some have been seen cheering and others have been seen weeping in fear of what may come next. The conspirators claim they acted to ‘restore the Republic’ in Rome — but Rome now awaits the chaos that may inevitably follow.</p>
     </section>
 
-    <section class="card scenario" aria-labelledby="scenario-title">
-      <div class="scenario-head">
-        <h2 id="scenario-title">Scenario 1: Escalating agitation at a public park</h2>
-        <p class="hint">24-year-old pacing and shouting, crowd present, no visible weapon, safe egress available.</p>
-      </div>
-      <div class="scenario-body">
-        <p><strong>What would you do next?</strong></p>
-        <div class="choices">
-          <button class="choice scenario-choice" data-correct="true">A) One clinician leads calm engagement, reduces crowd stimulus, offers simple choices while partner performs safety watch.</button>
-          <button class="choice scenario-choice" data-correct="false">B) Immediate physical restraint without verbal attempt.</button>
-          <button class="choice scenario-choice" data-correct="false">C) Delay all communication and stand off indefinitely.</button>
-        </div>
-        <div id="scenario-feedback" class="feedback" aria-live="polite"></div>
-      </div>
-    </section>
-
-    <footer class="small">Training prototype only. Verify against current NSW Ambulance/QLD CPG, policy, and legislation before practice.</footer>
-  </main>
-
-  <script>
-    function wireQuiz(buttonSelector, feedbackId) {
-      const feedback = document.getElementById(feedbackId);
-      document.querySelectorAll(buttonSelector).forEach((button) => {
-        button.addEventListener('click', () => {
-          const ok = button.dataset.correct === 'true';
-          if (ok) {
-            feedback.className = 'feedback good';
-            feedback.textContent = 'Correct. This supports rapport, preserves safety, and aligns with least restrictive practice.';
-          } else {
-            feedback.className = 'feedback bad';
-            feedback.textContent = 'Not ideal. Reframe with calm, collaborative language and keep safety options open.';
-          }
-        });
-      });
-    }
-
-    wireQuiz('.scenario-choice', 'scenario-feedback');
-    wireQuiz('.deescalation', 'deescalation-feedback');
-    wireQuiz('.legal-choice', 'legal-feedback');
-
-    const podcast = document.getElementById('podcast');
-    const playClip = document.getElementById('play-clip');
-    const speedToggle = document.getElementById('speed-toggle');
-    const speeds = [1, 1.25, 1.5];
-    let speedIndex = 0;
-
-    playClip.addEventListener('click', () => {
-      if (podcast.paused) {
-        podcast.play();
-      } else {
-        podcast.pause();
-      }
-    });
-
-    speedToggle.addEventListener('click', () => {
-      speedIndex = (speedIndex + 1) % speeds.length;
-      podcast.playbackRate = speeds[speedIndex];
-      speedToggle.textContent = `Speed: ${speeds[speedIndex]}x`;
-    });
-
-    const applyNotes = document.getElementById('apply-notes');
-    const notesInput = document.getElementById('janison-notes');
-    const notesOutput = document.getElementById('notes-output');
-
-    applyNotes.addEventListener('click', () => {
-      const value = notesInput.value.trim();
-      if (!value) {
-        notesOutput.textContent = 'Please paste module notes first.';
-        return;
-      }
-      notesOutput.textContent = `Imported teaching notes: ${value}`;
-    });
-
-  </script>
-  <title>Paramedic Learning Hub</title>
-  <style>
-    :root{--navy:#12325f;--blue:#2c6bb2;--soft:#eef5ff;--white:#fff;--green:#1f8d5a;--text:#1a2b42;--muted:#5a6c84;--radius:14px;--shadow:0 10px 24px rgba(18,50,95,.12)}
-    *{box-sizing:border-box} body{margin:0;font-family:Inter,Segoe UI,Arial,sans-serif;background:linear-gradient(180deg,#eaf2ff,#f8fbff);color:var(--text)}
-    .container{max-width:1140px;margin:auto;padding:1rem}
-    header{background:linear-gradient(130deg,var(--navy),var(--blue));color:#fff;padding:2rem 1rem;border-bottom:4px solid #5ad29c}
-    .hero h1{margin:.1rem 0 .5rem;font-size:clamp(1.6rem,3vw,2.3rem)} .hero p{max-width:74ch;margin:0;color:#e6efff}
-    .hero-actions{display:flex;gap:.7rem;flex-wrap:wrap;margin-top:1rem}
-    .btn{border:none;border-radius:10px;padding:.65rem .95rem;font-weight:700;cursor:pointer}
-    .btn.primary{background:#fff;color:var(--navy)} .btn.secondary{background:#dff2ff;color:#09385f}
-    .search{margin:1rem 0;background:#fff;border:1px solid #d4e4ff;border-radius:12px;padding:.7rem .85rem;width:100%}
-    .cards{display:grid;grid-template-columns:1fr;gap:.9rem} @media(min-width:760px){.cards{grid-template-columns:repeat(3,1fr)}}
-    .card{background:#fff;border-radius:var(--radius);box-shadow:var(--shadow);padding:1rem;border:1px solid #e1ebfb;cursor:pointer}
-    .card h3{margin:.1rem 0 .45rem;font-size:1.05rem} .small{color:var(--muted);font-size:.92rem}
-    .tabs{display:flex;gap:.5rem;flex-wrap:wrap;margin:.7rem 0}
-    .tab-btn{border:1px solid #cce0ff;background:#fff;border-radius:10px;padding:.5rem .75rem;cursor:pointer}
-    .tab-btn.active{background:#e7f0ff;border-color:var(--blue);font-weight:700}
-    .tab-panel{display:none;background:#fff;border:1px solid #deebff;border-radius:12px;padding:1rem;box-shadow:var(--shadow)} .tab-panel.active{display:block}
-    .quiz button{display:block;width:100%;text-align:left;margin:.5rem 0;padding:.65rem;border-radius:10px;border:1px solid #cddfff;background:#fff;cursor:pointer}
-    .feedback{display:none;padding:.7rem;border-radius:10px;margin-top:.6rem}.feedback.good{display:block;background:#e8f8ef;color:#0f5a35;border:1px solid #bce5cd}.feedback.bad{display:block;background:#fff4e8;color:#724300;border:1px solid #f4d9b2}
-    .sim{background:#fff;border:1px solid #dce9ff;border-radius:12px;padding:.9rem;margin-top:1rem}
-    .sim-output{margin-top:.6rem;padding:.65rem;border-radius:10px;background:var(--soft)}
-    .disclaimer{margin-top:.7rem;padding:.7rem;border-left:4px solid var(--green);background:#ecfff5;border-radius:8px;font-size:.92rem}
-    .legal-btn{background:#12325f;color:#fff;border:none;border-radius:10px;padding:.6rem .9rem;font-weight:700;cursor:pointer;margin-top:.55rem}
-    .legal-box{display:none;margin-top:.7rem;background:#e8f1ff;border:1px solid #bfd6ff;border-radius:10px;padding:.75rem}
-    .legal-box.open{display:block}
-    .medblock{margin-top:.7rem;background:#0d1118;color:#f2f5fb;border-radius:12px;overflow:hidden}
-    .medblock h4{margin:0;padding:.55rem .8rem;background:#6f2c72;color:#fff}
-    .medblock .section{padding:.75rem .9rem;border-top:1px solid #1c2533}
-    .medblock .good{background:#203d18;border-left:4px solid #6bbf3f;padding:.5rem .7rem;border-radius:8px}
-    .medblock .bad{background:#4d1519;border-left:4px solid #e33b42;padding:.5rem .7rem;border-radius:8px}
-    .medblock ul{margin:.4rem 0 .1rem 1rem}
-    .drug-tabs{display:flex;gap:.4rem;flex-wrap:wrap;margin:.6rem 0}.drug-btn{border:1px solid #b8cdf1;background:#fff;border-radius:9px;padding:.45rem .65rem;cursor:pointer}.drug-btn.active{background:#dce9ff;border-color:#2c6bb2;font-weight:700}.drug-panel{display:none}.drug-panel.active{display:block}
-    .form-grid{display:grid;gap:.7rem;grid-template-columns:1fr}@media(min-width:760px){.form-grid{grid-template-columns:1fr 1fr}}.form-field{display:flex;flex-direction:column;gap:.3rem}.form-field input,.form-field select,.form-field textarea{padding:.55rem;border:1px solid #cddfff;border-radius:8px;font:inherit}.checkline{display:flex;gap:.9rem;flex-wrap:wrap}.form-actions{display:flex;gap:.6rem;margin-top:.7rem}.form-image{margin-top:.7rem;background:#fff;border:1px solid #d7e5ff;border-radius:12px;padding:.6rem}.form-image img{width:100%;height:auto;border-radius:8px;display:block}
-    .w-card{margin-top:.7rem;background:#0f1117;color:#f1f0ff;border-radius:12px;overflow:hidden}.w-head{padding:16px;border-bottom:1px solid rgba(255,255,255,.1)}.w-title{font-size:1.5rem}.w-grid{display:grid;grid-template-columns:1fr;gap:1px;background:rgba(255,255,255,.06)}@media(min-width:860px){.w-grid{grid-template-columns:1fr 1fr}}.w-cell{background:#0f1117;padding:14px}.w-lab{font-size:.75rem;letter-spacing:.08em;text-transform:uppercase;color:#c084fc;margin-bottom:.45rem}.w-note{background:rgba(168,85,247,.1);border-top:1px solid rgba(168,85,247,.2);padding:12px}
-    footer{padding:1.2rem 0 2rem;color:var(--muted);font-size:.88rem}
-  </style>
-</head>
-<body>
-<header>
-  <div class="container hero">
-    <h1>Paramedic Learning Hub</h1>
-    <p>Interactive learning modules for behavioural emergencies, safe sedation practice, legal context, and case-based decision making.</p>
-    <div class="hero-actions">
-      <button class="btn primary" onclick="document.getElementById('learning-sections').scrollIntoView({behavior:'smooth'})">Start Learning</button>
-      <button class="btn secondary" onclick="document.getElementById('scenario-quiz').scrollIntoView({behavior:'smooth'})">Open Scenario</button>
-    </div>
-  </div>
-</header>
-
-<main class="container">
-  <input id="searchBox" class="search" type="text" placeholder="Search modules (e.g. sedation, legal, scenario)..." />
-
-  <section class="cards" id="moduleCards">
-    <article class="card" data-keywords="behavioural disturbance agitation mental health"><h3>1. Behavioural Disturbance</h3><p class="small">Recognition cues, immediate priorities, and reversible causes.</p></article>
-    <article class="card" data-keywords="de-escalation communication safety scene"><h3>2. De-escalation</h3><p class="small">Verbal techniques, team roles, and safety planning.</p></article>
-    <article class="card" data-keywords="sedation moa mechanism olanzapine ketamine"><h3>3. Sedation & MOA</h3><p class="small">Medication mechanism concepts and respiratory risk awareness.</p></article>
-    <article class="card" data-keywords="nsw mental health act section 20 section 22"><h3>4. NSW Mental Health Act</h3><p class="small">Quick legal orientation for transport and care decisions.</p></article>
-    <article class="card" data-keywords="case scenarios quiz"><h3>5. Case Scenarios</h3><p class="small">Apply learning through interactive scenario questions.</p></article>
-  </section>
-
-  <section id="learning-sections" style="margin-top:1rem">
-    <div class="tabs" role="tablist">
-      <button class="tab-btn active" data-tab="t1">Behavioural Disturbance</button>
-      <button class="tab-btn" data-tab="t2">De-escalation</button>
-      <button class="tab-btn" data-tab="t3">Sedation & MOA</button>
-      <button class="tab-btn" data-tab="t4">NSW Mental Health Act</button>
-      <button class="tab-btn" data-tab="t5">Case Scenarios</button>
-      <button class="tab-btn" data-tab="t6">Section 20 Form</button>
-      <button class="tab-btn" data-tab="t7">Wernikes</button>
-    </div>
-
-    <div id="t1" class="tab-panel active"><strong>Behavioural Disturbance:</strong> Assess risk, monitor airway/breathing/circulation, and screen for hypoxia, hypoglycaemia, intoxication, trauma, and delirium.</div>
-    <div id="t2" class="tab-panel"><strong>De-escalation:</strong> One lead communicator, calm tone, clear boundaries, reduced stimuli, and maintain egress for crew safety.</div>
-    <div id="t3" class="tab-panel"><strong>Sedation & MOA</strong>
-      <p class="small">Interactive sedation pharmacology reference (education only).</p>
-      <div class="drug-tabs" role="tablist">
-        <button class="drug-btn active" data-drugtab="olz">Olanzapine</button>
-        <button class="drug-btn" data-drugtab="drp">Droperidol</button>
-        <button class="drug-btn" data-drugtab="ket">Ketamine</button>
-        <button class="drug-btn" data-drugtab="mdz">Midazolam</button>
-        <button class="drug-btn" data-drugtab="fnt">Fentanyl</button>
-      </div>
-
-      <div id="olz" class="drug-panel active medblock"><h4>Olanzapine</h4><div class="section"><strong>MOA:</strong> Antagonist at serotonin, dopamine, and muscarinic receptors.</div><div class="section good"><strong>CPG indication:</strong> Behavioural disturbance (CPG BD1).</div><div class="section bad"><strong>Key risks:</strong> Sedation, hypotension, respiratory depression risk with other CNS depressants.</div></div>
-      <div id="drp" class="drug-panel medblock"><h4>Droperidol</h4><div class="section"><strong>MOA:</strong> Butyrophenone antipsychotic with dopamine antagonism and sedative effects.</div><div class="section good"><strong>CPG indications:</strong> Behavioural disturbance (CPG BD1), palliative context (CPG PC03 where applicable).</div><div class="section bad"><strong>Key risks:</strong> QT prolongation risk, hypotension, enhanced CNS depression with sedatives/opiates.</div></div>
-      <div id="ket" class="drug-panel medblock"><h4>Ketamine</h4><div class="section"><strong>MOA:</strong> Non-competitive NMDA antagonist with dissociative and analgesic effects.</div><div class="section good"><strong>Use context:</strong> Severe agitation/pain pathways per current CPG and authorisation level.</div><div class="section bad"><strong>Key risks:</strong> Emergence effects, hypersalivation, hypertension/tachycardia, airway complications in high-risk patients.</div></div>
-      <div id="mdz" class="drug-panel medblock"><h4>Midazolam</h4><div class="section"><strong>MOA:</strong> Benzodiazepine enhancing GABA-A inhibition causing anxiolysis/sedation.</div><div class="section good"><strong>Use context:</strong> Sedation and seizure/agitation protocols per CPG.</div><div class="section bad"><strong>Key risks:</strong> Respiratory depression, oversedation, hypotension (especially with co-administered sedatives/opioids).</div></div>
-      <div id="fnt" class="drug-panel medblock"><h4>Fentanyl</h4><div class="section"><strong>MOA:</strong> Potent μ-opioid agonist providing rapid analgesia.</div><div class="section good"><strong>Use context:</strong> Moderate to severe pain management per CPG.</div><div class="section bad"><strong>Key risks:</strong> Respiratory depression, bradycardia, hypotension, and additive sedation effects.</div></div>
-
-      <div class="disclaimer">For exact dose, route, contraindications, and scope use the current NSW Ambulance CPGs and local governance. <a href="https://cpg.ambulance.nsw.gov.au/tabs/guidelines" target="_blank" rel="noopener noreferrer">Open NSW CPG guidelines</a>.</div>
-    </div>
-    <div id="t4" class="tab-panel"><strong>NSW Mental Health Act:</strong>
-      <button id="legalToggle" class="legal-btn" type="button">Open Section 20 & 22 details</button>
-      <div id="legalBox" class="legal-box">
-        <p><strong>Section 20:</strong> “(1) An ambulance officer who provides ambulance services in relation to a person may take the person to a declared mental health facility if the officer believes on reasonable grounds that the person appears to be mentally ill or mentally disturbed and that it would be beneficial to the person’s welfare to be dealt with in accordance with this Act.</p>
-        <p>(2) An ambulance officer may request police assistance if of the opinion that there are serious concerns relating to the safety of the person or other persons if the person is taken to a mental health facility without the assistance of a police officer.”</p>
-        <p><strong>Section 22:</strong> “(1) A police officer who, in any place, finds a person who appears to be mentally ill or mentally disturbed may apprehend the person and take the person to a declared mental health facility if the officer believes on reasonable grounds that–</p>
-        <p>(a) the person is committing or has recently committed an offence or that the person has recently attempted to kill himself or herself or that it is probable that the person will attempt to kill himself or herself or any other person or attempt to cause serious physical harm to himself or herself or any other person, and</p>
-        <p>(b) it would be beneficial to the person’s welfare to be dealt with in accordance with this Act, rather than otherwise in accordance with law.</p>
-        <p>(2) A police officer may apprehend a person under this section without a warrant and may exercise any powers conferred by section 81 on a person who is authorised under that section to take a person to a mental health facility or another health facility.”</p>
-      </div>
-    </div>
-    <div id="t5" class="tab-panel"><strong>Case Scenarios:</strong> Practice what to do next under pressure and debrief why safer options are preferred.</div>
-    <div id="t6" class="tab-panel">
-      <strong>Section 20 Form</strong>
-      <p class="small">Reference form image (training view).</p>
-      <figure class="form-image">
-        <img src="assets/section20-form.jpg" alt="NSW Mental Health Act 2007 Section 20 request by ambulance officer form">
-      </figure>
-      <p class="small">If the image is not visible, place the provided file at <code>assets/section20-form.jpg</code>.</p>
-    </div>
-    <div id="t7" class="tab-panel">
-      <strong>Wernikes</strong>
-      <div class="w-card">
-        <div class="w-head"><div class="small">Neurology · Nutritional Deficiency</div><div class="w-title">Wernicke's Encephalopathy</div><div class="small">Thiamine (Vitamin B1) deficiency — acute neurological emergency</div></div>
-        <div class="w-grid">
-          <div class="w-cell"><div class="w-lab">Cause & Risk Factors</div><p>Thiamine deficiency causing neuronal injury in diencephalic and brainstem structures.</p><p class="small">Chronic alcoholism, malnutrition, prolonged vomiting, eating disorders, post bariatric surgery, IV glucose without B1.</p></div>
-          <div class="w-cell"><div class="w-lab">Classic Triad</div><ul><li>Confusion / encephalopathy</li><li>Ataxia</li><li>Nystagmus / ophthalmoplegia</li></ul></div>
-          <div class="w-cell"><div class="w-lab">Prehospital Treatment</div><ul><li>Give IV/IM thiamine before glucose.</li><li>Check BGL and treat hypoglycaemia after thiamine where possible.</li><li>Airway support, vitals, ECG, urgent transport.</li></ul></div>
-          <div class="w-cell"><div class="w-lab">Outcomes & Progression</div><p><strong>Early treatment:</strong> ocular signs improve first, confusion improves over days.</p><p><strong>Untreated:</strong> Korsakoff syndrome, coma, death.</p></div>
-        </div>
-        <div class="w-note"><strong>⚠ Key Rule:</strong> Always give thiamine before glucose in suspected deficiency states.</div>
-      </div>
-    </div>
-  </section>
-
-  <section id="scenario-quiz" class="sim">
-    <h3>Scenario Quiz</h3>
-    <p>After sedation, the patient becomes snoring with RR 6 and SpO₂ 88%. What is your immediate priority?</p>
-    <div class="quiz">
-      <button data-correct="true">Open airway, high-flow oxygen, and assist ventilation while monitoring continuously.</button>
-      <button data-correct="false">Wait and observe because sedation has reduced agitation.</button>
-      <button data-correct="false">Complete legal paperwork first, then reassess breathing.</button>
-    </div>
-    <div id="quizFeedback" class="feedback" aria-live="polite"></div>
-  </section>
-
-  <footer>Designed for mobile and Brightspace embedding. Educational resource only.</footer>
-</main>
-
-<script>
-  document.querySelectorAll('.tab-btn').forEach(btn=>{btn.addEventListener('click',()=>{document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));document.querySelectorAll('.tab-panel').forEach(p=>p.classList.remove('active'));btn.classList.add('active');document.getElementById(btn.dataset.tab).classList.add('active');});});
-
-    </div>
-
-    <div id="t1" class="tab-panel active"><strong>Behavioural Disturbance:</strong> Assess risk, monitor airway/breathing/circulation, and screen for hypoxia, hypoglycaemia, intoxication, trauma, and delirium.</div>
-    <div id="t2" class="tab-panel"><strong>De-escalation:</strong> One lead communicator, calm tone, clear boundaries, reduced stimuli, and maintain egress for crew safety.</div>
-    <div id="t3" class="tab-panel"><strong>Sedation & MOA</strong>
-      <p class="small">Interactive sedation pharmacology reference (education only).</p>
-      <div class="drug-tabs" role="tablist">
-        <button class="drug-btn active" data-drugtab="olz">Olanzapine</button>
-        <button class="drug-btn" data-drugtab="drp">Droperidol</button>
-        <button class="drug-btn" data-drugtab="ket">Ketamine</button>
-        <button class="drug-btn" data-drugtab="mdz">Midazolam</button>
-        <button class="drug-btn" data-drugtab="fnt">Fentanyl</button>
-      </div>
-
-      <div id="olz" class="drug-panel active medblock"><h4>Olanzapine</h4><div class="section"><strong>MOA:</strong> Antagonist at serotonin, dopamine, and muscarinic receptors.</div><div class="section good"><strong>CPG indication:</strong> Behavioural disturbance (CPG BD1).</div><div class="section bad"><strong>Key risks:</strong> Sedation, hypotension, respiratory depression risk with other CNS depressants.</div></div>
-      <div id="drp" class="drug-panel medblock"><h4>Droperidol</h4><div class="section"><strong>MOA:</strong> Butyrophenone antipsychotic with dopamine antagonism and sedative effects.</div><div class="section good"><strong>CPG indications:</strong> Behavioural disturbance (CPG BD1), palliative context (CPG PC03 where applicable).</div><div class="section bad"><strong>Key risks:</strong> QT prolongation risk, hypotension, enhanced CNS depression with sedatives/opiates.</div></div>
-      <div id="ket" class="drug-panel medblock"><h4>Ketamine</h4><div class="section"><strong>MOA:</strong> Non-competitive NMDA antagonist with dissociative and analgesic effects.</div><div class="section good"><strong>Use context:</strong> Severe agitation/pain pathways per current CPG and authorisation level.</div><div class="section bad"><strong>Key risks:</strong> Emergence effects, hypersalivation, hypertension/tachycardia, airway complications in high-risk patients.</div></div>
-      <div id="mdz" class="drug-panel medblock"><h4>Midazolam</h4><div class="section"><strong>MOA:</strong> Benzodiazepine enhancing GABA-A inhibition causing anxiolysis/sedation.</div><div class="section good"><strong>Use context:</strong> Sedation and seizure/agitation protocols per CPG.</div><div class="section bad"><strong>Key risks:</strong> Respiratory depression, oversedation, hypotension (especially with co-administered sedatives/opioids).</div></div>
-      <div id="fnt" class="drug-panel medblock"><h4>Fentanyl</h4><div class="section"><strong>MOA:</strong> Potent μ-opioid agonist providing rapid analgesia.</div><div class="section good"><strong>Use context:</strong> Moderate to severe pain management per CPG.</div><div class="section bad"><strong>Key risks:</strong> Respiratory depression, bradycardia, hypotension, and additive sedation effects.</div></div>
-
-      <div class="disclaimer">For exact dose, route, contraindications, and scope use the current NSW Ambulance CPGs and local governance. <a href="https://cpg.ambulance.nsw.gov.au/tabs/guidelines" target="_blank" rel="noopener noreferrer">Open NSW CPG guidelines</a>.</div>
-    </div>
-    <div id="t4" class="tab-panel"><strong>NSW Mental Health Act:</strong>
-      <button id="legalToggle" class="legal-btn" type="button">Open Section 20 & 22 details</button>
-      <div id="legalBox" class="legal-box">
-        <p><strong>Section 20:</strong> “(1) An ambulance officer who provides ambulance services in relation to a person may take the person to a declared mental health facility if the officer believes on reasonable grounds that the person appears to be mentally ill or mentally disturbed and that it would be beneficial to the person’s welfare to be dealt with in accordance with this Act.</p>
-        <p>(2) An ambulance officer may request police assistance if of the opinion that there are serious concerns relating to the safety of the person or other persons if the person is taken to a mental health facility without the assistance of a police officer.”</p>
-        <p><strong>Section 22:</strong> “(1) A police officer who, in any place, finds a person who appears to be mentally ill or mentally disturbed may apprehend the person and take the person to a declared mental health facility if the officer believes on reasonable grounds that–</p>
-        <p>(a) the person is committing or has recently committed an offence or that the person has recently attempted to kill himself or herself or that it is probable that the person will attempt to kill himself or herself or any other person or attempt to cause serious physical harm to himself or herself or any other person, and</p>
-        <p>(b) it would be beneficial to the person’s welfare to be dealt with in accordance with this Act, rather than otherwise in accordance with law.</p>
-        <p>(2) A police officer may apprehend a person under this section without a warrant and may exercise any powers conferred by section 81 on a person who is authorised under that section to take a person to a mental health facility or another health facility.”</p>
-      </div>
-    </div>
-    <div id="t5" class="tab-panel"><strong>Case Scenarios:</strong> Practice what to do next under pressure and debrief why safer options are preferred.</div>
-    <div id="t6" class="tab-panel">
-      <strong>Section 20 Form</strong>
-      <p class="small">Reference form image (training view).</p>
-      <figure class="form-image">
-        <img src="assets/section20-form.jpg" alt="NSW Mental Health Act 2007 Section 20 request by ambulance officer form">
-      </figure>
-      <p class="small">If the image is not visible, place the provided file at <code>assets/section20-form.jpg</code>.</p>
-    </div>
-  </section>
-
-      <p class="small">Training form prototype for documenting Section 20 decision-making.</p>
-      <form class="form-grid" onsubmit="event.preventDefault(); alert('Training form saved locally (demo only).');">
-        <label class="form-field">Date/time<input type="datetime-local" required></label>
-        <label class="form-field">Patient name<input type="text" placeholder="Full name"></label>
-        <label class="form-field">DOB<input type="date"></label>
-        <label class="form-field">Location found<input type="text"></label>
-        <label class="form-field">Presenting behaviour<textarea rows="3" placeholder="Observed disturbance / risk indicators"></textarea></label>
-        <label class="form-field">Reasonable grounds<select><option>Mentally ill</option><option>Mentally disturbed</option><option>Both</option></select></label>
-        <label class="form-field">Welfare benefit rationale<textarea rows="3" placeholder="Why transport under Section 20 is beneficial"></textarea></label>
-        <label class="form-field">Police assistance requested?<select><option>No</option><option>Yes</option></select></label>
-        <div class="form-field"><span>Immediate risk factors</span><div class="checkline"><label><input type="checkbox"> Self-harm risk</label><label><input type="checkbox"> Harm to others</label><label><input type="checkbox"> Severe agitation</label><label><input type="checkbox"> Weapon concern</label></div></div>
-        <label class="form-field">Receiving mental health facility<input type="text"></label>
-        <label class="form-field">Crew clinician name<input type="text"></label>
-        <label class="form-field">Clinical level<select><option>Student</option><option>Paramedic</option><option>ICP</option><option>Other</option></select></label>
-        <label class="form-field" style="grid-column:1/-1">Additional notes<textarea rows="4"></textarea></label>
-        <div class="form-actions" style="grid-column:1/-1"><button class="btn primary" type="submit">Save (Demo)</button><button class="btn secondary" type="reset">Clear</button></div>
-      </form>
-    </div>
-  </section>
-
-  <section class="sim" aria-label="Sedation teaching simulator">
-    <h3>Sedation Dose Simulator (Teaching Only)</h3>
-    <label for="sedationRange">Sedation intensity: <span id="sedLevel">0</span>/10</label>
-    <input id="sedationRange" type="range" min="0" max="10" value="0" style="width:100%" />
-    <div id="simOutput" class="sim-output">Low intensity: continue de-escalation, clinical reassessment, and preparation.</div>
-    <div class="disclaimer">Teaching disclaimer: this simulator is educational only. Students must follow current NSW Ambulance CPGs and local governance for all clinical decisions.</div>
-  </section>
-
-  <section id="scenario-quiz" class="sim">
-    <h3>Scenario Quiz</h3>
-    <p>After sedation, the patient becomes snoring with RR 6 and SpO₂ 88%. What is your immediate priority?</p>
-    <div class="quiz">
-      <button data-correct="true">Open airway, high-flow oxygen, and assist ventilation while monitoring continuously.</button>
-      <button data-correct="false">Wait and observe because sedation has reduced agitation.</button>
-      <button data-correct="false">Complete legal paperwork first, then reassess breathing.</button>
-    </div>
-    <div id="quizFeedback" class="feedback" aria-live="polite"></div>
-  </section>
-
-  <footer>Designed for mobile and Brightspace embedding. Educational resource only.</footer>
-</main>
-
-<script>
-  document.querySelectorAll('.tab-btn').forEach(btn=>{btn.addEventListener('click',()=>{document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));document.querySelectorAll('.tab-panel').forEach(p=>p.classList.remove('active'));btn.classList.add('active');document.getElementById(btn.dataset.tab).classList.add('active');});});
-
-  const range=document.getElementById('sedationRange');const level=document.getElementById('sedLevel');const out=document.getElementById('simOutput');
-  range.addEventListener('input',()=>{const v=Number(range.value);level.textContent=v;if(v<=3) out.textContent='Low intensity: continue de-escalation, clinical reassessment, and preparation.'; else if(v<=6) out.textContent='Moderate intensity: monitor closely; prepare airway equipment and escalation plan.'; else out.textContent='High intensity: respiratory depression risk increased; prioritise airway positioning, oxygenation, and assisted ventilation readiness.';});
-
-  const feedback=document.getElementById('quizFeedback');document.querySelectorAll('.quiz button').forEach(b=>{b.addEventListener('click',()=>{if(b.dataset.correct==='true'){feedback.className='feedback good';feedback.textContent='Correct: treat respiratory depression immediately with airway and ventilation support.';} else {feedback.className='feedback bad';feedback.textContent='Not correct: post-sedation hypoventilation is time-critical; ABC actions come first.';}});});
-
-  const search=document.getElementById('searchBox');const cards=[...document.querySelectorAll('#moduleCards .card')];
-  search.addEventListener('input',()=>{const q=search.value.toLowerCase().trim();cards.forEach(card=>{const text=(card.textContent+' '+card.dataset.keywords).toLowerCase();card.style.display=text.includes(q)?'block':'none';});});
-
-  document.querySelectorAll('#moduleCards .card').forEach((card, i)=>card.addEventListener('click',()=>{const id='t'+(i+1);document.querySelector('[data-tab="'+id+'"]').click();document.getElementById('learning-sections').scrollIntoView({behavior:'smooth'});}));
-
-  document.querySelectorAll('.drug-btn').forEach(btn=>{btn.addEventListener('click',()=>{document.querySelectorAll('.drug-btn').forEach(b=>b.classList.remove('active'));document.querySelectorAll('#t3 .drug-panel').forEach(p=>p.classList.remove('active'));btn.classList.add('active');document.getElementById(btn.dataset.drugtab).classList.add('active');});});
-
-  const legalToggle=document.getElementById('legalToggle');const legalBox=document.getElementById('legalBox');
-  if(legalToggle&&legalBox){legalToggle.addEventListener('click',()=>{legalBox.classList.toggle('open');legalToggle.textContent=legalBox.classList.contains('open')?'Hide Section 20 & 22 details':'Open Section 20 & 22 details';});}
-</script>
+    <p class="final-line">Julius Caesar’s final moments</p>
+  </article>
 </body>
 </html>
